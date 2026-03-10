@@ -1,0 +1,97 @@
+<div class="list-collections-strict container">
+  <div class="list-collections-strict__header">
+    <h1>All Device Collections</h1>
+  </div>
+
+  <div class="list-collections-strict__grid">
+    {% for collection in collections %}
+      {% unless collection.handle == 'frontpage' %}
+        <div class="collection-card-strict">
+          <a href="{{ collection.url }}" class="collection-card-strict__link">
+            <div class="collection-card-strict__image-wrapper">
+              {% if collection.image %}
+                <img src="{{ collection.image | img_url: '600x' }}" alt="{{ collection.title | escape }}" class="collection-card-strict__image">
+              {% elsif collection.products.first and collection.products.first.featured_image %}
+                <img src="{{ collection.products.first.featured_image | img_url: '600x' }}" alt="{{ collection.title | escape }}" class="collection-card-strict__image">
+              {% else %}
+                <div class="collection-card-strict__placeholder">Neoglyn Collection</div>
+              {% endif %}
+            </div>
+            <h3 class="collection-card-strict__title">{{ collection.title }}</h3>
+          </a>
+        </div>
+      {% endunless %}
+    {% endfor %}
+  </div>
+</div>
+
+<style>
+.list-collections-strict {
+  padding: 80px 0;
+}
+.list-collections-strict__header {
+  text-align: center;
+  margin-bottom: 60px;
+}
+.list-collections-strict__header h1 {
+  font-size: 48px;
+  letter-spacing: -1px;
+}
+.list-collections-strict__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  gap: 40px;
+}
+.collection-card-strict {
+  text-align: center;
+}
+.collection-card-strict__link {
+  text-decoration: none;
+  color: var(--color-text);
+  display: block;
+}
+.collection-card-strict__image-wrapper {
+  background-color: #FAFAFA;
+  border: 1px solid var(--color-borders);
+  border-radius: 4px;
+  margin-bottom: 24px;
+  overflow: hidden;
+  position: relative;
+  padding-top: 100%; /* Square */
+}
+.collection-card-strict__image {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.4s ease;
+}
+.collection-card-strict__link:hover .collection-card-strict__image {
+  transform: scale(1.05);
+}
+.collection-card-strict__placeholder {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 20px;
+  color: var(--color-text);
+}
+.collection-card-strict__title {
+  font-size: 24px;
+  font-weight: 700;
+}
+</style>
+
+{% schema %}
+{
+  "name": "List collections strict",
+  "settings": []
+}
+{% endschema %}

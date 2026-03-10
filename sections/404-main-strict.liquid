@@ -1,0 +1,45 @@
+<div class="error-404-strict container">
+  <div class="error-404-strict__content">
+    <h1>404</h1>
+    <h2>Device Not Found</h2>
+    <p>The clinical tool or page you are looking for does not exist in the Neoglyn ecosystem.</p>
+    <a href="{{ routes.all_products_collection_url }}" class="btn">Return to Collection</a>
+  </div>
+</div>
+
+<style>
+.error-404-strict {
+  padding: 120px 0;
+  text-align: center;
+  min-height: 60vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.error-404-strict__content h1 {
+  font-size: 120px;
+  line-height: 1;
+  color: var(--color-primary-btn);
+  margin-bottom: 20px;
+  letter-spacing: -5px;
+}
+.error-404-strict__content h2 {
+  font-size: 32px;
+  margin-bottom: 20px;
+}
+.error-404-strict__content p {
+  font-size: 18px;
+  opacity: 0.8;
+  margin-bottom: 40px;
+  max-width: 500px;
+  margin-left: auto;
+  margin-right: auto;
+}
+</style>
+
+{% schema %}
+{
+  "name": "404 strict",
+  "settings": []
+}
+{% endschema %}
