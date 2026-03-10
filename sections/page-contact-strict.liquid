@@ -1,125 +1,204 @@
-<div class="page-strict container">
-  <header class="page-strict__header">
-    <h1 class="page-strict__title">{{ page.title }}</h1>
-  </header>
+<div class="contact-strict container">
   
-  <div class="page-strict__content rte">
-    {{ page.content }}
+  <div class="contact-strict__header text-center">
+    <h1>Let's start a conversation</h1>
+    <p>Whether you have questions about our technology or need support with your device, our dedicated team is here to help.</p>
   </div>
 
-  <div class="contact-strict__form-wrapper">
-    {% form 'contact', class: 'contact-strict__form' %}
-      {% if form.posted_successfully? %}
-        <div class="contact-strict__success">Your message has been received by Neoglyn Support.</div>
-      {% endif %}
-
-      {{ form.errors | default_errors }}
-
-      <div class="contact-strict__field-group">
-        <div class="contact-strict__field">
-          <label for="ContactFormName">Name</label>
-          <input type="text" id="ContactFormName" name="contact[name]" value="{% if form.name %}{{ form.name }}{% elsif customer %}{{ customer.name }}{% endif %}">
+  <div class="contact-layout">
+    
+    <!-- Left: Form -->
+    <div class="contact-form-side">
+      {%- form 'contact', id: 'ContactForm', class: 'custom-contact-form' -%}
+        
+        <div class="form-row">
+          <div class="form-group">
+            <label for="ContactForm-name">Name</label>
+            <input type="text" id="ContactForm-name" name="contact[name]" placeholder="Jane Doe">
+          </div>
+          <div class="form-group">
+            <label for="ContactForm-email">Email <span aria-hidden="true">*</span></label>
+            <input type="email" id="ContactForm-email" name="contact[email]" required placeholder="jane@example.com">
+          </div>
         </div>
-
-        <div class="contact-strict__field">
-          <label for="ContactFormEmail">Email</label>
-          <input type="email" id="ContactFormEmail" name="contact[email]" autocorrect="off" autocapitalize="off" value="{% if form.email %}{{ form.email }}{% elsif customer %}{{ customer.email }}{% endif %}">
+        
+        <div class="form-group">
+          <label for="ContactForm-subject">Subject</label>
+          <input type="text" id="ContactForm-subject" name="contact[subject]" placeholder="How can we help?">
+        </div>
+        
+        <div class="form-group">
+          <label for="ContactForm-body">Message</label>
+          <textarea id="ContactForm-body" name="contact[body]" rows="6" placeholder="Write your message here..."></textarea>
+        </div>
+        
+        <button type="submit" class="btn btn--dark">SEND MESSAGE</button>
+        
+      {%- endform -%}
+    </div>
+    
+    <!-- Right: Info & Map -->
+    <div class="contact-info-side">
+      <div class="info-block">
+        <h3>Global Headquarters</h3>
+        <p>Neoglyn Technologies Inc.<br>
+        100 Innovation Way, Suite 400<br>
+        San Francisco, CA 94107</p>
+      </div>
+      
+      <div class="info-split">
+        <div class="info-block">
+          <h4>General Inquiries</h4>
+          <a href="mailto:hello@neoglyn.com">hello@neoglyn.com</a>
+        </div>
+        <div class="info-block">
+          <h4>Trade & Press</h4>
+          <a href="mailto:partners@neoglyn.com">partners@neoglyn.com</a>
         </div>
       </div>
-
-      <div class="contact-strict__field">
-        <label for="ContactFormSubject">Subject / Device Name</label>
-        <input type="text" id="ContactFormSubject" name="contact[subject]">
+      
+      <div class="map-placeholder">
+        <img src="https://via.placeholder.com/600x400/EAEAEA/001F3F?text=Interactive+Map" alt="San Francisco Headquarters Map">
       </div>
+    </div>
 
-      <div class="contact-strict__field">
-        <label for="ContactFormMessage">Message</label>
-        <textarea rows="10" id="ContactFormMessage" name="contact[body]">{% if form.body %}{{ form.body }}{% endif %}</textarea>
-      </div>
-
-      <button type="submit" class="btn contact-strict__submit">Submit Inquiry</button>
-    {% endform %}
   </div>
+
 </div>
 
 <style>
-.page-strict {
-  padding: 100px 0;
-  max-width: 900px;
-  margin: 0 auto;
+.contact-strict {
+  padding: 80px 0 120px;
 }
-.page-strict__header {
-  text-align: center;
-  margin-bottom: 60px;
+.contact-strict__header {
+  max-width: 600px;
+  margin: 0 auto 80px;
 }
-.page-strict__title {
-  font-size: 56px;
+.contact-strict__header h1 {
+  font-size: 48px;
+  line-height: 1.1;
   letter-spacing: -1px;
+  margin-bottom: 20px;
 }
-.contact-strict__form-wrapper {
-  margin-top: 60px;
+.contact-strict__header p {
+  font-size: 16px;
+  opacity: 0.8;
+  line-height: 1.6;
 }
-.contact-strict__field-group {
+
+.contact-layout {
   display: flex;
-  gap: 30px;
+  gap: 80px;
 }
-.contact-strict__field-group .contact-strict__field {
+.contact-form-side {
+  flex: 1.2;
+}
+.custom-contact-form {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+.form-row {
+  display: flex;
+  gap: 24px;
+}
+.form-group {
   flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
 }
-.contact-strict__field {
-  margin-bottom: 30px;
-}
-.contact-strict__field label {
-  display: block;
-  margin-bottom: 12px;
+.form-group label {
+  font-size: 12px;
   font-weight: 700;
-  font-size: 14px;
-  text-transform: uppercase;
   letter-spacing: 1px;
 }
-.contact-strict__field input, 
-.contact-strict__field textarea {
+.form-group input, 
+.form-group textarea {
   width: 100%;
-  padding: 18px;
+  padding: 16px;
   border: 1px solid var(--color-borders);
-  border-radius: 4px;
+  border-radius: 8px;
   font-family: inherit;
-  font-size: 16px;
+  font-size: 14px;
   background-color: var(--color-primary-bg);
   color: var(--color-text);
-  transition: box-shadow 0.2s ease;
+  transition: border-color 0.2s;
 }
-.contact-strict__field input:focus, 
-.contact-strict__field textarea:focus {
+.form-group input:focus, 
+.form-group textarea:focus {
   outline: none;
-  box-shadow: 4px 4px 0px var(--color-primary-btn);
+  border-color: var(--color-text);
 }
-.contact-strict__success {
-  background-color: var(--color-primary-btn);
-  color: var(--color-text);
-  padding: 20px;
-  border-radius: 4px;
+.form-group textarea {
+  resize: vertical;
+}
+
+.contact-info-side {
+  flex: 1;
+  background-color: var(--color-secondary-bg);
+  padding: 40px;
+  border-radius: 12px;
+}
+.info-block {
   margin-bottom: 30px;
+}
+.info-block h3 {
+  font-size: 24px;
+  margin-bottom: 12px;
+}
+.info-block h4 {
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  color: var(--color-text);
+  opacity: 0.6;
+  margin-bottom: 8px;
+}
+.info-block p, 
+.info-block a {
+  font-size: 14px;
+  line-height: 1.6;
+  color: var(--color-text);
+  opacity: 0.9;
+  text-decoration: none;
+}
+.info-block a {
   font-weight: 700;
-  text-align: center;
-  border: 1px solid var(--color-borders);
 }
-.contact-strict__submit {
+.info-block a:hover {
+  text-decoration: underline;
+}
+.info-split {
+  display: flex;
+  gap: 40px;
+  border-top: 1px solid var(--color-borders);
+  padding-top: 30px;
+  margin-bottom: 10px;
+}
+.map-placeholder {
   width: 100%;
-  font-size: 18px;
-  padding: 20px;
+  border-radius: 8px;
+  overflow: hidden;
 }
-@media (max-width: 768px) {
-  .contact-strict__field-group {
+.map-placeholder img {
+  width: 100%;
+  display: block;
+}
+
+@media (max-width: 900px) {
+  .contact-layout {
     flex-direction: column;
-    gap: 0;
+  }
+  .form-row {
+    flex-direction: column;
   }
 }
 </style>
 
 {% schema %}
 {
-  "name": "Contact strict",
+  "name": "Contact Strict",
   "settings": []
 }
 {% endschema %}
