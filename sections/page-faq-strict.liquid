@@ -1,118 +1,215 @@
-<div class="page-strict container">
-  <header class="page-strict__header">
-    <h1 class="page-strict__title">{{ page.title }}</h1>
-  </header>
+<div class="faq-strict container">
   
-  <div class="faq-strict__accordion">
-    {% for block in section.blocks %}
-      <div class="faq-strict__item">
-        <button class="faq-strict__question">{{ block.settings.question }} 
-          <span class="faq-strict__icon">+</span>
-        </button>
-        <div class="faq-strict__answer">
-          <p>{{ block.settings.answer }}</p>
-        </div>
-      </div>
-    {% endfor %}
+  <div class="faq-strict__header">
+    <div class="caption caption--mint">SUPPORT</div>
+    <h1>Frequently Asked Questions</h1>
   </div>
 
-  <div class="page-strict__content rte" style="margin-top: 60px;">
-    {{ page.content }}
+  <div class="faq-layout">
+    
+    <div class="faq-main">
+      <div class="faq-accordion">
+        
+        <div class="faq-item open">
+          <button class="faq-question">
+            <span>Is the Neoglyn Lumina safe for all skin types?</span>
+            <svg class="icon-plus" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
+            <svg class="icon-minus" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"></line></svg>
+          </button>
+          <div class="faq-answer">
+            <p>Yes. The Neoglyn Lumina uses non-UV LED light and micro-pulse technology that is FDA-cleared and dermatologist-tested to be safe for all skin tones and types, including sensitive skin. If you are extremely photosensitive or have specific medical conditions, we recommend consulting your dermatologist prior to use.</p>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question">
+            <span>How long until I see results?</span>
+            <svg class="icon-plus" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
+            <svg class="icon-minus" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"></line></svg>
+          </button>
+          <div class="faq-answer">
+            <p>Clinical studies show visible improvements in skin tone and acne reduction within 2 weeks of consistent use (5 minutes daily). Significant reductions in fine lines and deeper wrinkles typically occur after 4 to 8 weeks.</p>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question">
+            <span>Can I use my own serums with the device?</span>
+            <svg class="icon-plus" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
+            <svg class="icon-minus" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"></line></svg>
+          </button>
+          <div class="faq-answer">
+            <p>While you can use other water-based serums, our Conductive Repair Serum is specifically formulated to maximize the micro-pulse conductivity and LED light penetration. Oil-based serums will block the optical delivery entirely.</p>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question">
+            <span>What is the warranty policy?</span>
+            <svg class="icon-plus" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
+            <svg class="icon-minus" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"></line></svg>
+          </button>
+          <div class="faq-answer">
+            <p>Every Neoglyn device comes with a comprehensive 2-year warranty covering any manufacturing defects. We also offer a 60-day money-back guarantee if you are not completely satisfied with your clinical results.</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Sidebar Support -->
+    <aside class="faq-sidebar">
+      <div class="support-card">
+        <h3>Still have questions?</h3>
+        <p>Our team of clinical specialists is available to assist you with tailored advice.</p>
+        <a href="/pages/contact" class="btn btn--block">Contact Support</a>
+        
+        <div class="support-contact-info">
+          <p><strong>Email:</strong> care@neoglyn.com</p>
+          <p><strong>Hours:</strong> Mon-Fri, 9am - 6pm EST</p>
+        </div>
+      </div>
+    </aside>
+
   </div>
 </div>
 
 <style>
-.page-strict {
-  padding: 100px 0;
-  max-width: 900px;
-  margin: 0 auto;
+.faq-strict {
+  padding: 80px 0 120px;
 }
-.page-strict__header {
-  text-align: center;
-  margin-bottom: 80px;
+.faq-strict__header {
+  margin-bottom: 60px;
 }
-.page-strict__title {
-  font-size: 56px;
+.faq-strict__header h1 {
+  font-size: 48px;
+  line-height: 1.1;
   letter-spacing: -1px;
 }
-.faq-strict__accordion {
+.faq-layout {
+  display: flex;
+  gap: 80px;
+  align-items: flex-start;
+}
+.faq-main {
+  flex: 1;
+}
+.faq-accordion {
   border-top: 2px solid var(--color-borders);
 }
-.faq-strict__item {
-  border-bottom: 2px solid var(--color-borders);
+.faq-item {
+  border-bottom: 1px solid var(--color-borders);
 }
-.faq-strict__question {
+.faq-question {
   width: 100%;
   text-align: left;
   background: none;
   border: none;
-  padding: 30px 0;
-  font-size: 24px;
+  padding: 24px 0;
+  font-size: 18px;
   font-weight: 700;
   color: var(--color-text);
-  cursor: pointer;
   display: flex;
   justify-content: space-between;
   align-items: center;
+  cursor: pointer;
+  letter-spacing: -0.5px;
 }
-.faq-strict__icon {
-  font-size: 32px;
-  font-weight: 400;
+.icon-minus {
+  display: none;
 }
-.faq-strict__answer {
+.faq-item.open .icon-plus {
+  display: none;
+}
+.faq-item.open .icon-minus {
+  display: block;
+}
+.faq-answer {
+  display: none;
   padding-bottom: 30px;
-  font-size: 18px;
-  line-height: 1.6;
   color: var(--color-text);
-  opacity: 0.9;
-  /* Script would typically toggle height/display */
+  font-size: 16px;
+  line-height: 1.8;
+  opacity: 0.8;
+  max-width: 90%;
 }
-@media (max-width: 768px) {
-  .page-strict {
-    padding: 60px 0;
+.faq-item.open .faq-answer {
+  display: block;
+}
+
+/* Sidebar */
+.faq-sidebar {
+  width: 320px;
+  flex-shrink: 0;
+}
+.support-card {
+  background-color: var(--color-secondary-bg);
+  padding: 40px;
+  border-radius: 12px;
+}
+.support-card h3 {
+  font-size: 20px;
+  margin-bottom: 12px;
+}
+.support-card p {
+  font-size: 14px;
+  opacity: 0.8;
+  line-height: 1.6;
+  margin-bottom: 24px;
+}
+.btn--block {
+  width: 100%;
+  display: block;
+  margin-bottom: 30px;
+}
+.support-contact-info {
+  border-top: 1px solid var(--color-borders);
+  padding-top: 24px;
+}
+.support-contact-info p {
+  margin-bottom: 10px;
+  font-size: 13px;
+  opacity: 0.9;
+}
+.support-contact-info strong {
+  margin-right: 8px;
+}
+
+@media (max-width: 900px) {
+  .faq-layout {
+    flex-direction: column;
   }
-  .page-strict__title {
-    font-size: 40px;
-  }
-  .faq-strict__question {
-    font-size: 20px;
-    padding: 24px 0;
+  .faq-sidebar {
+    width: 100%;
   }
 }
 </style>
 
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  const questions = document.querySelectorAll('.faq-question');
+  questions.forEach(q => {
+    q.addEventListener('click', function() {
+      const parent = this.parentElement;
+      const isOpen = parent.classList.contains('open');
+      
+      // Close all others
+      document.querySelectorAll('.faq-item').forEach(item => {
+        item.classList.remove('open');
+      });
+      
+      // Toggle current
+      if (!isOpen) {
+        parent.classList.add('open');
+      }
+    });
+  });
+});
+</script>
+
 {% schema %}
 {
-  "name": "FAQ strict",
-  "blocks": [
-    {
-      "type": "faq_item",
-      "name": "FAQ Item",
-      "settings": [
-        {
-          "type": "text",
-          "id": "question",
-          "label": "Question",
-          "default": "How rigid is the Neoglyn return policy?"
-        },
-        {
-          "type": "textarea",
-          "id": "answer",
-          "label": "Answer",
-          "default": "Exact instructions are provided in your clinical packaging."
-        }
-      ]
-    }
-  ],
-  "presets": [
-    {
-      "name": "FAQ Section Strict",
-      "blocks": [
-        { "type": "faq_item" },
-        { "type": "faq_item" },
-        { "type": "faq_item" }
-      ]
-    }
-  ]
+  "name": "FAQ Strict",
+  "settings": []
 }
 {% endschema %}
