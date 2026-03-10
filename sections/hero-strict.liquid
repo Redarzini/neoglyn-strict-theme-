@@ -1,95 +1,101 @@
 <div class="hero-screen1 container">
   <div class="hero-screen1__content">
-    <div class="caption"><span class="caption-dot"></span> NEW CLINICAL SERIES</div>
-    <h1 class="hero-screen1__title">SKIN<br>EVOLVED.</h1>
-    <p class="hero-screen1__text">Medical-grade micro-pulse technology meets aesthetic elegance. Experience the Neoglyn Lumina facial system from the comfort of your home.</p>
+    <div class="caption"><span class="caption-dot"></span> {{ section.settings.caption | default: 'NEW CLINICAL SERIES' }}</div>
+    <h1 class="hero-screen1__title">{{ section.settings.title | default: 'SKIN<br>EVOLVED.' }}</h1>
+    <p class="hero-screen1__text">{{ section.settings.text | default: 'Medical-grade micro-pulse technology meets aesthetic elegance. Experience the Neoglyn Lumina facial system from the comfort of your home.' }}</p>
     
     <div class="hero-screen1__actions">
-      <a href="#" class="btn">SHOP NOW</a>
-      <a href="#" class="btn btn--outline">LEARN THE TECH</a>
+      {% if section.settings.primary_btn_text != blank %}
+        <a href="{{ section.settings.primary_btn_link | default: routes.all_products_collection_url }}" class="btn">{{ section.settings.primary_btn_text }}</a>
+      {% endif %}
+      {% if section.settings.secondary_btn_text != blank %}
+        <a href="{{ section.settings.secondary_btn_link | default: '#' }}" class="btn btn--outline">{{ section.settings.secondary_btn_text }}</a>
+      {% endif %}
     </div>
   </div>
   
   <div class="hero-screen1__image">
     <div class="hero-image-placeholder">
-      <!-- In production this receives the exact Rose Gold device image -->
-      <img src="https://via.placeholder.com/600x600/F5D0C5/001F3F?text=Rose+Gold+Device" alt="Neoglyn Lumina">
+      {% if section.settings.image != blank %}
+        {{ section.settings.image | image_url: width: 800 | image_tag: alt: section.settings.title }}
+      {% else %}
+        <img src="https://images.unsplash.com/photo-1616683693504-3ea7e9ad6fec?q=80&w=800&auto=format&fit=crop" alt="Neoglyn Lumina Device Mock">
+      {% endif %}
     </div>
   </div>
 </div>
 
 <style>
-.hero-screen1 {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 80px 0;
-  gap: 60px;
-}
-.hero-screen1__content {
-  flex: 1;
-  max-width: 500px;
-}
-.caption-dot {
-  display: inline-block;
-  width: 6px;
-  height: 6px;
-  background-color: var(--color-primary-btn);
-  border-radius: 50%;
-}
-.hero-screen1__title {
-  font-size: 80px;
-  line-height: 1;
-  letter-spacing: -2px;
-  margin-bottom: 24px;
-}
-.hero-screen1__text {
-  font-size: 16px;
-  color: var(--color-text);
-  margin-bottom: 40px;
-  opacity: 0.8;
-}
-.hero-screen1__actions {
-  display: flex;
-  gap: 16px;
-}
-.hero-screen1__image {
-  flex: 1;
-  display: flex;
-  justify-content: flex-end;
-}
-.hero-image-placeholder {
-  width: 100%;
-  max-width: 600px;
-  aspect-ratio: 1;
-  border-radius: 20px;
-  overflow: hidden;
-  box-shadow: 0 20px 40px rgba(0,0,0,0.1);
-}
-.hero-image-placeholder img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-
+.hero-screen1 { display: flex; align-items: center; justify-content: space-between; padding: 80px 0; gap: 60px; }
+.hero-screen1__content { flex: 1; max-width: 500px; }
+.caption-dot { display: inline-block; width: 6px; height: 6px; background-color: var(--color-primary-btn); border-radius: 50%; }
+.hero-screen1__title { font-size: 80px; line-height: 1; letter-spacing: -2px; margin-bottom: 24px; }
+.hero-screen1__text { font-size: 16px; color: var(--color-text); margin-bottom: 40px; opacity: 0.8; }
+.hero-screen1__actions { display: flex; gap: 16px; }
+.hero-screen1__image { flex: 1; display: flex; justify-content: flex-end; }
+.hero-image-placeholder { width: 100%; max-width: 600px; aspect-ratio: 1; border-radius: 20px; overflow: hidden; box-shadow: 0 20px 40px rgba(0,0,0,0.1); background-color: #F5D0C5; }
+.hero-image-placeholder img { width: 100%; height: 100%; object-fit: cover; }
 @media (max-width: 900px) {
-  .hero-screen1 {
-    flex-direction: column;
-    text-align: center;
-    padding: 40px 0;
-  }
-  .caption {
-    justify-content: center;
-  }
-  .hero-screen1__actions {
-    justify-content: center;
-  }
+  .hero-screen1 { flex-direction: column; text-align: center; padding: 40px 0; }
+  .caption { justify-content: center; }
+  .hero-screen1__actions { justify-content: center; }
 }
 </style>
 
 {% schema %}
 {
-  "name": "Hero strict",
-  "settings": []
+  "name": "Hero Strict",
+  "settings": [
+    {
+      "type": "text",
+      "id": "caption",
+      "label": "Caption Text",
+      "default": "NEW CLINICAL SERIES"
+    },
+    {
+      "type": "html",
+      "id": "title",
+      "label": "Heading",
+      "default": "SKIN<br>EVOLVED."
+    },
+    {
+      "type": "textarea",
+      "id": "text",
+      "label": "Description text",
+      "default": "Medical-grade micro-pulse technology meets aesthetic elegance. Experience the Neoglyn Lumina facial system from the comfort of your home."
+    },
+    {
+      "type": "text",
+      "id": "primary_btn_text",
+      "label": "Primary Button Text",
+      "default": "SHOP NOW"
+    },
+    {
+      "type": "url",
+      "id": "primary_btn_link",
+      "label": "Primary Button Link"
+    },
+    {
+      "type": "text",
+      "id": "secondary_btn_text",
+      "label": "Secondary Button Text",
+      "default": "LEARN THE TECH"
+    },
+    {
+      "type": "url",
+      "id": "secondary_btn_link",
+      "label": "Secondary Button Link"
+    },
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Hero Image (Square recommended)"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Hero Strict"
+    }
+  ]
 }
 {% endschema %}

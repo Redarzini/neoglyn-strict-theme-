@@ -1,160 +1,94 @@
 <footer class="site-footer-strict">
   <div class="container site-footer-strict__inner">
-    
-    <div class="footer-brand">
-      <div class="logo-text">NEOGLYN</div>
-      <p>Redefining beauty through technology. Our clinical-grade devices are engineered to deliver professional results without the office visit.</p>
-      <div class="footer-social">
-        <a href="#"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg></a>
-        <a href="#"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg></a>
-      </div>
-    </div>
-    
-    <div class="footer-links">
-      <div class="footer-column">
-        <h3>SHOP</h3>
-        <ul>
-          <li><a href="#">Lumina Collection</a></li>
-          <li><a href="#">Treatment Serums</a></li>
-          <li><a href="#">Bundles</a></li>
-          <li><a href="#">Gift Cards</a></li>
-        </ul>
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-grid">
+      
+      <div class="footer-brand">
+        <h2 class="footer-logo">{{ shop.name | upcase }}</h2>
+        <p>{{ section.settings.brand_text | default: 'Science-backed skincare technology engineered for uncompromised results.' }}</p>
       </div>
       
-      <div class="footer-column">
-        <h3>LEARN</h3>
-        <ul>
-          <li><a href="#">How it Works</a></li>
-          <li><a href="#">Clinical Studies</a></li>
-          <li><a href="#">Help Center</a></li>
-          <li><a href="#">Contact Us</a></li>
-        </ul>
-      </div>
+      {% for block in section.blocks %}
+        {% if block.type == 'link_list' %}
+          <div class="footer-links" {{ block.shopify_attributes }}>
+            <h3>{{ block.settings.title | default: linklists[block.settings.menu].title }}</h3>
+            <ul>
+              {% for link in linklists[block.settings.menu].links %}
+                <li><a href="{{ link.url }}">{{ link.title }}</a></li>
+              {% else %}
+                <li><a href="{{ routes.all_products_collection_url }}">Shop All</a></li>
+                <li><a href="/pages/how-it-works">How It Works</a></li>
+              {% endfor %}
+            </ul>
+          </div>
+        {% endif %}
+      {% endfor %}
+      
     </div>
     
-  </div>
-  
-  <div class="container">
-    <div class="site-footer-strict__bottom">
-      <div class="copyright">
-        &copy; {{ 'now' | date: "%Y" }} NEOGLYN TECH. ALL RIGHTS RESERVED.
+    <div class="footer-bottom">
+      <div class="footer-legal">
+        <p>&copy; {{ 'now' | date: '%Y' }} {{ shop.name }}. All rights reserved.</p>
       </div>
-      <div class="legal-links">
-        <a href="#">PRIVACY POLICY</a>
-        <a href="#">TERMS OF SERVICE</a>
+      <div class="footer-payment-icons">
+        {%- for type in shop.enabled_payment_types -%}
+          {{ type | payment_type_svg_tag: class: 'payment-icon' }}
+        {%- endfor -%}
       </div>
     </div>
   </div>
 </footer>
 
 <style>
-/* Continuing seamlessly from the dark clinical section */
-.site-footer-strict {
-  background-color: var(--color-dark-bg);
-  color: var(--color-dark-text);
-  padding: 80px 0 40px;
-}
-.site-footer-strict__inner {
-  display: flex;
-  justify-content: space-between;
-  margin-bottom: 80px;
-  gap: 40px;
-}
-.footer-brand {
-  max-width: 300px;
-}
-.footer-brand .logo-text {
-  color: var(--color-dark-text);
-  margin-bottom: 20px;
-}
-.footer-brand p {
-  font-size: 12px;
-  line-height: 1.8;
-  opacity: 0.7;
-  margin-bottom: 30px;
-}
-.footer-social {
-  display: flex;
-  gap: 16px;
-}
-.footer-social a {
-  color: var(--color-dark-text);
-  opacity: 0.8;
-  transition: opacity 0.2s ease;
-}
-.footer-social a:hover {
-  opacity: 1;
-}
-
-.footer-links {
-  display: flex;
-  gap: 100px;
-}
-.footer-column h3 {
-  color: var(--color-primary-btn);
-  font-size: 11px;
-  text-transform: uppercase;
-  letter-spacing: 2px;
-  margin-bottom: 24px;
-}
-.footer-column ul {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-}
-.footer-column li {
-  margin-bottom: 16px;
-}
-.footer-column a {
-  text-decoration: none;
-  color: var(--color-dark-text);
-  font-size: 13px;
-  opacity: 0.8;
-  transition: opacity 0.2s ease;
-}
-.footer-column a:hover {
-  opacity: 1;
-  color: var(--color-primary-btn);
-}
-
-.site-footer-strict__bottom {
-  border-top: 1px solid rgba(255,255,255,0.1);
-  padding-top: 30px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  font-size: 10px;
-  letter-spacing: 1px;
-  opacity: 0.6;
-}
-.legal-links {
-  display: flex;
-  gap: 20px;
-}
-.legal-links a {
-  color: var(--color-dark-text);
-  text-decoration: none;
-}
-
-@media (max-width: 768px) {
-  .site-footer-strict__inner {
-    flex-direction: column;
-  }
-  .footer-links {
-    gap: 50px;
-    flex-direction: column;
-  }
-  .site-footer-strict__bottom {
-    flex-direction: column;
-    gap: 20px;
-    text-align: center;
-  }
-}
+.site-footer { background-color: var(--color-footer-bg, #001F3F); color: white; padding: 100px 0 40px; }
+.footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 60px; margin-bottom: 80px; }
+.footer-logo { font-size: 24px; font-weight: 800; letter-spacing: 2px; margin-bottom: 24px; display: flex; align-items: center; gap: 8px; }
+.footer-logo::before { content: "✦"; color: var(--color-primary-btn); }
+.footer-brand p { opacity: 0.7; font-size: 14px; line-height: 1.6; max-width: 300px; }
+.footer-links h3 { font-size: 12px; text-transform: uppercase; letter-spacing: 1.5px; margin-bottom: 24px; opacity: 0.5; }
+.footer-links ul { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 16px; }
+.footer-links a { color: white; text-decoration: none; font-size: 14px; opacity: 0.9; transition: opacity 0.2s; }
+.footer-links a:hover { opacity: 1; color: var(--color-primary-btn); }
+.footer-bottom { border-top: 1px solid rgba(255,255,255,0.1); padding-top: 30px; display: flex; justify-content: space-between; align-items: center; font-size: 12px; opacity: 0.6; }
+.payment-icon { width: 38px; height: 24px; margin-left: 8px; }
+@media (max-width: 900px) { .footer-grid { grid-template-columns: 1fr 1fr; gap: 40px; } .footer-brand { grid-column: span 2; } }
+@media (max-width: 600px) { .footer-grid { grid-template-columns: 1fr; } .footer-brand { grid-column: span 1; } .footer-bottom { flex-direction: column; gap: 20px; text-align: center; } }
 </style>
 
 {% schema %}
 {
-  "name": "Footer Strict (Dark)",
-  "settings": []
+  "name": "Footer Strict",
+  "settings": [
+    {
+      "type": "textarea",
+      "id": "brand_text",
+      "label": "Brand Description"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "link_list",
+      "name": "Menu",
+      "settings": [
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Heading"
+        },
+        {
+          "type": "link_list",
+          "id": "menu",
+          "label": "Menu"
+        }
+      ]
+    }
+  ],
+  "default": {
+    "blocks": [
+      { "type": "link_list", "settings": { "title": "Shop", "menu": "main-menu" } },
+      { "type": "link_list", "settings": { "title": "Support", "menu": "footer" } }
+    ]
+  }
 }
 {% endschema %}

@@ -12,7 +12,7 @@
         <div class="results-card results-card--after">
           <div class="results-card__badge results-card__badge--mint">DAY 30</div>
           <div class="results-card__image-container">
-            <img src="https://via.placeholder.com/300x400/FFFFFF/001F3F?text=After" alt="After 30 days">
+            <img src="https://images.unsplash.com/photo-1616683693504-3ea7e9ad6fec?q=80&w=800&auto=format&fit=crop/FFFFFF/001F3F?text=After" alt="After 30 days">
           </div>
           
           <div class="results-stats-overlay">
@@ -133,106 +133,35 @@
   left: -20px; /* Overlap effect from the screenshot */
   right: 0;
   display: flex;
-  flex-direction: column;
-  gap: 10px;
-  z-index: 20;
-}
-.stat-box {
-  background-color: #00152B; /* Deep Navy */
-  padding: 20px;
-  border-radius: 8px;
-  width: 90%;
-}
-.stat-box--highlight {
-  background-color: #002B4A; /* Slightly lighter navy */
-  margin-left: 10%;
-}
-.stat-number {
-  font-size: 32px;
-  font-weight: 800;
-  color: var(--color-primary-btn);
-  margin-bottom: 4px;
-}
-.stat-label {
-  font-size: 10px;
-  text-transform: uppercase;
-  letter-spacing: 1px;
-  font-weight: 700;
-  opacity: 0.8;
-}
-
-.results-content {
-  flex: 1;
-  max-width: 500px;
-}
-.caption--mint {
-  color: var(--color-primary-btn);
-}
-.results-content__title {
-  font-size: 56px;
-  line-height: 1.1;
-  margin-bottom: 40px;
-  letter-spacing: -1px;
-}
-.results-quote {
-  font-size: 18px;
-  line-height: 1.7;
-  margin-bottom: 40px;
-  opacity: 0.9;
-}
-.results-user {
-  display: flex;
-  align-items: center;
-  gap: 16px;
-  margin-bottom: 40px;
-}
-.user-avatar {
-  width: 40px;
-  height: 40px;
-  background-color: #A3C4D3;
-  border-radius: 50%;
-}
-.user-name {
-  font-size: 14px;
-  font-weight: 700;
-  margin-bottom: 4px;
-}
-.user-desc {
-  font-size: 10px;
-  color: var(--color-primary-btn);
-  letter-spacing: 1px;
-  font-weight: 700;
-}
-.results-link {
-  color: var(--color-primary-btn);
-  text-decoration: none;
-  font-weight: 700;
-  font-size: 14px;
-  letter-spacing: 1px;
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  text-transform: uppercase;
-}
-.results-link:hover {
-  text-decoration: underline;
-}
-
-@media (max-width: 990px) {
-  .results-layout {
-    flex-direction: column-reverse;
-  }
-}
+.clinical-strict { background-color: var(--color-dark-bg, #001F3F); color: white; padding: 120px 0; overflow: hidden; }
+.clinical-strict__inner { display: flex; align-items: center; gap: 80px; }
+.clinical-content { flex: 1; }
+.clinical-content h2 { font-size: 40px; margin: 16px 0 24px; color: white; line-height: 1.1; }
+.clinical-content p { font-size: 16px; opacity: 0.8; margin-bottom: 40px; line-height: 1.6; }
+.clinical-stats { list-style: none; padding: 0; margin: 0 0 40px 0; border-top: 1px solid rgba(255,255,255,0.1); }
+.clinical-stats li { display: flex; align-items: flex-start; gap: 24px; padding: 24px 0; border-bottom: 1px solid rgba(255,255,255,0.1); }
+.clinical-stats strong { font-size: 32px; color: var(--color-primary-btn); line-height: 1; }
+.clinical-stats span { font-size: 14px; opacity: 0.9; line-height: 1.5; }
+.clinical-image { flex: 1; position: relative; }
+.clip-image { border-radius: 20px; box-shadow: 0 40px 80px rgba(0,0,0,0.3); width: 100%; height: auto; display: block; }
+@media (max-width: 900px) { .clinical-strict__inner { flex-direction: column; } }
 </style>
 
 {% schema %}
 {
   "name": "Clinical Results Strict",
-  "settings": [],
-  "presets": [
-    {
-      "name": "Clinical Results Strict"
-    }
-  ]
+  "settings": [
+    { "type": "text", "id": "caption", "label": "Caption", "default": "VERIFIED EFFICACY" },
+    { "type": "text", "id": "title", "label": "Heading", "default": "Clinical Results, Validated by Science" },
+    { "type": "textarea", "id": "text", "label": "Text", "default": "In an independent 8-week clinical study..." },
+    { "type": "text", "id": "stat_1", "label": "Stat 1 Number", "default": "94%" },
+    { "type": "text", "id": "stat_1_text", "label": "Stat 1 Text", "default": "Saw a visible reduction in fine lines and wrinkles." },
+    { "type": "text", "id": "stat_2", "label": "Stat 2 Number", "default": "88%" },
+    { "type": "text", "id": "stat_2_text", "label": "Stat 2 Text", "default": "Experienced a clearer, more even skin tone and reduced redness." },
+    { "type": "text", "id": "btn_text", "label": "Button Text", "default": "READ THE STUDY" },
+    { "type": "url", "id": "btn_link", "label": "Button Link" },
+    { "type": "image_picker", "id": "image", "label": "Image" }
+  ],
+  "presets": [ { "name": "Clinical Results Strict" } ]
 }
 {% endschema %}
