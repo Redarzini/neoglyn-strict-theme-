@@ -1,73 +1,121 @@
-<div class="page-strict container">
-  <header class="page-strict__header">
-    <h1 class="page-strict__title">{{ page.title }}</h1>
-  </header>
-  
-  <div class="page-strict__content">
-    <div class="page-strict__text rte">
-      {{ page.content }}
+<div class="about-hero-strict">
+  <div class="container about-hero-inner">
+    <div class="about-hero__content">
+      <div class="caption caption--mint">OUR MISSION</div>
+      <h1>The Science of Radiance</h1>
+      <p>Redefining skincare through advanced molecular research and clinical-grade engineering. Neoglyn was founded with a singular purpose: to democratize access to dermatologist-level technology without compromising on aesthetic elegance.</p>
     </div>
-    
-    <div class="about-strict__mission">
-      <h2>The Neoglyn Standard</h2>
-      <p>Our commitment is strictly to the elevation of beauty technology. We engineer devices that merge clinical efficacy with flawless, minimalist design. No distractions. Just results.</p>
+    <div class="about-hero__image">
+      <img src="https://via.placeholder.com/600x800/E5E5E5/001F3F?text=Laboratory" alt="Neoglyn Research">
+    </div>
+  </div>
+</div>
+
+<div class="about-values-strict">
+  <div class="container text-center">
+    <h2>The Neoglyn Standard</h2>
+    <div class="values-grid">
+      <div class="value-item">
+        <div class="value-icon">01</div>
+        <h3>Efficacy First</h3>
+        <p>Every device is backed by independently verified clinical trials. We measure success in measurable results.</p>
+      </div>
+      <div class="value-item">
+        <div class="value-icon">02</div>
+        <h3>Precision Engineering</h3>
+        <p>Built with aerospace-grade materials to ensure lifelong durability and exact wavelength output.</p>
+      </div>
+      <div class="value-item">
+        <div class="value-icon">03</div>
+        <h3>Radical Transparency</h3>
+        <p>No proprietary blends or hidden mechanisms. We publish our clinical data and component sourcing.</p>
+      </div>
     </div>
   </div>
 </div>
 
 <style>
-.page-strict {
+.about-hero-strict {
   padding: 100px 0;
-  max-width: 900px;
-  margin: 0 auto;
 }
-.page-strict__header {
-  text-align: center;
-  margin-bottom: 60px;
+.about-hero-inner {
+  display: flex;
+  align-items: center;
+  gap: 80px;
 }
-.page-strict__title {
+.about-hero__content {
+  flex: 1;
+}
+.about-hero__content h1 {
   font-size: 56px;
+  line-height: 1.1;
+  margin-bottom: 30px;
   letter-spacing: -1px;
 }
-.page-strict__text {
-  font-size: 20px;
+.about-hero__content p {
+  font-size: 18px;
   line-height: 1.8;
-  color: var(--color-text);
+  opacity: 0.8;
+}
+.about-hero__image {
+  flex: 1;
+  border-radius: 20px;
+  overflow: hidden;
+  position: relative;
+  aspect-ratio: 3/4;
+}
+.about-hero__image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.about-values-strict {
+  background-color: var(--color-secondary-bg);
+  padding: 100px 0;
+}
+.about-values-strict h2 {
+  font-size: 36px;
   margin-bottom: 60px;
-  opacity: 0.9;
 }
-.about-strict__mission {
-  background-color: var(--color-primary-bg);
-  border: 2px solid var(--color-borders);
-  padding: 60px;
-  text-align: center;
-  border-radius: 4px;
+.values-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 40px;
 }
-.about-strict__mission h2 {
-  font-size: 32px;
-  margin-bottom: 24px;
-  letter-spacing: -0.5px;
+.value-icon {
+  font-size: 48px;
+  font-weight: 800;
+  color: var(--color-borders);
+  line-height: 1;
+  margin-bottom: 20px;
 }
-.about-strict__mission p {
+.value-item h3 {
   font-size: 20px;
+  margin-bottom: 16px;
+}
+.value-item p {
+  opacity: 0.7;
   line-height: 1.6;
 }
-@media (max-width: 768px) {
-  .page-strict {
-    padding: 60px 0;
+
+@media (max-width: 900px) {
+  .about-hero-inner {
+    flex-direction: column;
   }
-  .page-strict__title {
+  .about-hero__content h1 {
     font-size: 40px;
   }
-  .about-strict__mission {
-    padding: 40px 20px;
+  .values-grid {
+    grid-template-columns: 1fr;
+    gap: 60px;
   }
 }
 </style>
 
 {% schema %}
 {
-  "name": "About strict",
+  "name": "About Strict",
   "settings": []
 }
 {% endschema %}
