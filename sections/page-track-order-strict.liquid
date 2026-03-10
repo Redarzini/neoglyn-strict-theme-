@@ -1,0 +1,226 @@
+<div class="track-order-strict container">
+  
+  <div class="track-order-header text-center">
+    <h1>Track Your Order</h1>
+    <p>Enter your order number and email address to see the latest updates on your shipment.</p>
+  </div>
+
+  <div class="track-form-container">
+    <div class="track-form">
+      <div class="form-group">
+        <label for="track-order-id">Order Number</label>
+        <input type="text" id="track-order-id" placeholder="e.g. NG-123456">
+      </div>
+      <div class="form-group">
+        <label for="track-email">Email Address</label>
+        <input type="email" id="track-email" placeholder="jane@example.com">
+      </div>
+      <button class="btn btn--block btn--dark">TRACK ORDER</button>
+    </div>
+  </div>
+
+  <!-- Mocked Timeline matches Screenshot specifically -->
+  <div class="track-timeline-container">
+    <h3>Shipment Timeline for NG-882910</h3>
+    
+    <div class="timeline">
+      
+      <div class="timeline-event current">
+        <div class="timeline-dot"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"></polyline></svg></div>
+        <div class="timeline-content">
+          <div class="event-header">
+            <h4>Delivered</h4>
+            <span class="event-date">Oct 24, 2:30 PM</span>
+          </div>
+          <p>Package dropped off at the front door.</p>
+          <span class="event-location">San Francisco, CA</span>
+        </div>
+      </div>
+      
+      <div class="timeline-event">
+        <div class="timeline-dot"></div>
+        <div class="timeline-content">
+          <div class="event-header">
+            <h4>Out for Delivery</h4>
+            <span class="event-date">Oct 24, 7:15 AM</span>
+          </div>
+          <p>Package is loaded onto the delivery vehicle.</p>
+          <span class="event-location">San Francisco, CA</span>
+        </div>
+      </div>
+
+      <div class="timeline-event">
+        <div class="timeline-dot"></div>
+        <div class="timeline-content">
+          <div class="event-header">
+            <h4>In Transit</h4>
+            <span class="event-date">Oct 22, 11:45 PM</span>
+          </div>
+          <p>Departed regional sorting facility.</p>
+          <span class="event-location">Los Angeles, CA</span>
+        </div>
+      </div>
+      
+      <div class="timeline-event">
+        <div class="timeline-dot"></div>
+        <div class="timeline-content">
+          <div class="event-header">
+            <h4>Label Created</h4>
+            <span class="event-date">Oct 21, 9:00 AM</span>
+          </div>
+          <p>Shipping label has been generated. Carrier is awaiting the package.</p>
+          <span class="event-location">Neoglyn Fulfillment Center</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+</div>
+
+<style>
+.track-order-strict {
+  padding: 80px 0 120px;
+  max-width: 800px; /* Narrower container for this page */
+}
+.track-order-header {
+  margin-bottom: 60px;
+}
+.track-order-header h1 {
+  font-size: 40px;
+  margin-bottom: 16px;
+}
+.track-order-header p {
+  opacity: 0.8;
+  font-size: 16px;
+}
+
+.track-form-container {
+  background-color: var(--color-Secondary-bg);
+  padding: 40px;
+  border-radius: 12px;
+  margin-bottom: 60px;
+}
+.track-form {
+  display: flex;
+  gap: 20px;
+  align-items: flex-end;
+}
+.track-form .form-group {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.track-form label {
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 1px;
+}
+.track-form input {
+  padding: 16px;
+  border: 1px solid var(--color-borders);
+  border-radius: 8px;
+  font-size: 14px;
+  width: 100%;
+}
+.track-form .btn {
+  padding: 18px 30px;
+  flex-shrink: 0;
+}
+
+/* Timeline */
+.track-timeline-container h3 {
+  font-size: 20px;
+  margin-bottom: 40px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid var(--color-borders);
+}
+.timeline {
+  position: relative;
+  padding-left: 30px;
+}
+.timeline::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 10px;
+  width: 2px;
+  background-color: var(--color-borders);
+}
+.timeline-event {
+  position: relative;
+  margin-bottom: 40px;
+}
+.timeline-event:last-child {
+  margin-bottom: 0;
+}
+.timeline-dot {
+  position: absolute;
+  left: -26px; /* 30 - 4 offset */
+  top: 0;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background-color: var(--color-borders);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  z-index: 2;
+}
+.timeline-event.current .timeline-dot {
+  background-color: var(--color-primary-btn);
+  color: var(--color-text);
+  width: 18px;
+  height: 18px;
+  left: -28px;
+  top: -2px;
+}
+.timeline-content {
+  padding-left: 20px;
+}
+.event-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 8px;
+}
+.event-header h4 {
+  margin: 0;
+  font-size: 16px;
+}
+.event-date {
+  font-size: 12px;
+  opacity: 0.6;
+  font-weight: 600;
+}
+.timeline-content p {
+  margin: 0 0 8px 0;
+  font-size: 14px;
+  opacity: 0.8;
+}
+.event-location {
+  font-size: 11px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: var(--color-text);
+  opacity: 0.5;
+  font-weight: 700;
+}
+
+@media (max-width: 768px) {
+  .track-form {
+    flex-direction: column;
+    align-items: stretch;
+  }
+}
+</style>
+
+{% schema %}
+{
+  "name": "Track Order Strict",
+  "settings": []
+}
+{% endschema %}

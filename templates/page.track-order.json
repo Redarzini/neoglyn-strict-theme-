@@ -1,0 +1,10 @@
+{
+  "sections": {
+    "main": {
+      "type": "page-track-order-strict"
+    }
+  },
+  "order": [
+    "main"
+  ]
+}
