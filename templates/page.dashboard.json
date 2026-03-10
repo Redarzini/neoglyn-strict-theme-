@@ -1,1 +1,10 @@
-{sections:{},order:[]} 
+{
+  "sections": {
+    "main": {
+      "type": "page-dashboard-strict"
+    }
+  },
+  "order": [
+    "main"
+  ]
+}

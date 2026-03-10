@@ -1,197 +1,333 @@
 <div class="dashboard-strict container">
-  <aside class="dashboard-strict__sidebar">
-    <div class="dashboard-strict__user-profile">
-      <div class="dashboard-strict__avatar">
-        {{ customer.first_name | slice: 0 | default: 'M' }}
-      </div>
-      <h2>{{ customer.name | default: 'Member' }}</h2>
-      <p>{{ customer.email | default: 'member@neoglyn.com' }}</p>
+  
+  <!-- Sidebar -->
+  <aside class="dashboard-sidebar">
+    <div class="user-profile">
+      <div class="user-avatar-large">A</div>
+      <div class="user-greeting">Welcome back,<br><strong>Alex</strong></div>
     </div>
-    <nav class="dashboard-strict__nav">
-      <ul>
-        <li><a href="#" class="active">Order History</a></li>
-        <li><a href="#">Account Details</a></li>
-        <li><a href="#">Device Warranty</a></li>
-        <li><a href="{{ routes.account_logout_url }}">Log Out</a></li>
-      </ul>
+    
+    <nav class="dashboard-nav">
+      <a href="#" class="active">DASHBOARD</a>
+      <a href="#">DEVICE METRICS</a>
+      <a href="#">ORDER HISTORY</a>
+      <a href="#">SETTINGS</a>
+      <a href="#" class="logout-link">LOG OUT</a>
     </nav>
   </aside>
 
-  <main class="dashboard-strict__main">
-    <header class="dashboard-strict__header">
-      <h1>Your Orders</h1>
-      <p>Tracking the delivery of your clinical beauty devices.</p>
-    </header>
+  <!-- Main Content -->
+  <div class="dashboard-main">
+    
+    <!-- Top Stats Row -->
+    <div class="dashboard-stats">
+      
+      <!-- Skin Score Widget -->
+      <div class="stat-widget stat-widget--dark">
+        <div class="stat-header">
+          <span class="caption caption--mint">SKIN SCORE</span>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><path d="M12 16v-4"></path><path d="M12 8h.01"></path></svg>
+        </div>
+        <div class="score-display">
+          <div class="score-number">92</div>
+          <div class="score-text">OUTSTANDING<br><span class="trend">+4 PTS THIS WEEK</span></div>
+        </div>
+      </div>
+      
+      <!-- Device Status Widget -->
+      <div class="stat-widget stat-widget--light">
+        <div class="stat-header">
+          <span class="caption">DEVICE STATUS</span>
+          <span class="status-dot online"></span>
+        </div>
+        <h3>Neoglyn Pro</h3>
+        <p>Battery: 85% • Last synced: 2h ago</p>
+      </div>
 
-    {% if customer.orders.size != 0 %}
-      <div class="dashboard-strict__orders">
-        <table>
-          <thead>
-            <tr>
-              <th>Order</th>
-              <th>Date</th>
-              <th>Status</th>
-              <th>Total</th>
-            </tr>
-          </thead>
-          <tbody>
-            {% for order in customer.orders %}
-              <tr>
-                <td>{{ order.name | link_to: order.customer_url }}</td>
-                <td>{{ order.created_at | date: "%B %d, %Y" }}</td>
-                <td><span class="status-badge">{{ order.fulfillment_status_label }}</span></td>
-                <td>{{ order.total_price | money }}</td>
-              </tr>
-            {% endfor %}
-          </tbody>
-        </table>
+    </div>
+
+    <!-- Recent Activity -->
+    <div class="dashboard-activity">
+      <div class="activity-header">
+        <h3>Recent Activity</h3>
+        <a href="#" class="view-all">View full history</a>
       </div>
-    {% else %}
-      <div class="dashboard-strict__empty">
-        <p>You haven't placed any orders yet. Begin your clinical beauty journey.</p>
-        <a href="{{ routes.all_products_collection_url }}" class="btn">Shop Devices</a>
-      </div>
-    {% endif %}
-  </main>
+      
+      <table class="activity-table">
+        <thead>
+          <tr>
+            <th>ORDER ID</th>
+            <th>DATE</th>
+            <th>STATUS</th>
+            <th>TOTAL</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><a href="#">#NG-882910</a></td>
+            <td>Oct 24, 2024</td>
+            <td><span class="status-pill status-transit">In Transit</span></td>
+            <td>$249.00</td>
+          </tr>
+          <tr>
+            <td><a href="#">#NG-875022</a></td>
+            <td>Sep 12, 2024</td>
+            <td><span class="status-pill status-delivered">Delivered</span></td>
+            <td>$85.00</td>
+          </tr>
+          <tr>
+            <td><a href="#">#NG-812009</a></td>
+            <td>Jan 05, 2024</td>
+            <td><span class="status-pill status-delivered">Delivered</span></td>
+            <td>$1,299.00</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+  </div>
 </div>
 
 <style>
 .dashboard-strict {
   display: flex;
   gap: 60px;
-  padding: 80px 0;
-  min-height: 70vh;
+  padding: 60px 0 100px;
+  min-height: 80vh;
 }
-.dashboard-strict__sidebar {
-  width: 300px;
+
+/* Sidebar */
+.dashboard-sidebar {
+  width: 280px;
   flex-shrink: 0;
-  border-right: 2px solid var(--color-borders);
+  border-right: 1px solid var(--color-borders);
   padding-right: 40px;
 }
-.dashboard-strict__avatar {
-  width: 80px;
-  height: 80px;
-  background-color: var(--color-primary-btn);
-  color: var(--color-text);
+.user-profile {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 60px;
+}
+.user-avatar-large {
+  width: 60px;
+  height: 60px;
+  background-color: var(--color-Secondary-bg);
+  border: 1px solid var(--color-borders);
   border-radius: 50%;
-  border: 2px solid var(--color-borders);
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 32px;
+  font-size: 24px;
   font-weight: 800;
-  margin-bottom: 20px;
+  color: var(--color-text);
 }
-.dashboard-strict__user-profile h2 {
+.user-greeting {
+  font-size: 14px;
+  color: var(--color-text);
+  line-height: 1.4;
+}
+.user-greeting strong {
+  font-size: 20px;
+  font-weight: 800;
+}
+.dashboard-nav {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.dashboard-nav a {
+  text-decoration: none;
+  color: var(--color-text);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  padding: 16px;
+  border-radius: 8px;
+  transition: background-color 0.2s;
+}
+.dashboard-nav a:hover, .dashboard-nav a.active {
+  background-color: var(--color-secondary-bg);
+}
+.logout-link {
+  margin-top: 40px;
+  opacity: 0.5;
+}
+
+/* Main Content */
+.dashboard-main {
+  flex: 1;
+}
+
+/* Stats */
+.dashboard-stats {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+  margin-bottom: 60px;
+}
+.stat-widget {
+  border-radius: 12px;
+  padding: 30px;
+}
+.stat-widget--dark {
+  background-color: var(--color-dark-bg);
+  color: white;
+}
+.stat-widget--light {
+  background-color: var(--color-secondary-bg);
+  border: 1px solid var(--color-borders);
+}
+.stat-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 24px;
+}
+.status-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+}
+.status-dot.online {
+  background-color: var(--color-primary-btn);
+}
+.score-display {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+.score-number {
+  font-size: 64px;
+  font-weight: 800;
+  line-height: 1;
+  color: var(--color-primary-btn);
+}
+.score-text {
+  font-size: 16px;
+  font-weight: 700;
+  letter-spacing: 1px;
+}
+.trend {
+  font-size: 10px;
+  color: var(--color-primary-btn);
+  font-weight: 700;
+}
+.stat-widget--light h3 {
   font-size: 24px;
   margin-bottom: 8px;
 }
-.dashboard-strict__user-profile p {
-  color: var(--color-text);
-  opacity: 0.8;
+.stat-widget--light p {
   font-size: 14px;
-  margin-bottom: 40px;
-}
-.dashboard-strict__nav ul {
-  list-style: none;
-  padding: 0;
+  opacity: 0.7;
   margin: 0;
 }
-.dashboard-strict__nav li {
-  margin-bottom: 16px;
+
+/* Activity Table */
+.activity-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  margin-bottom: 24px;
 }
-.dashboard-strict__nav a {
-  text-decoration: none;
+.activity-header h3 {
+  font-size: 24px;
+  margin: 0;
+}
+.view-all {
+  font-size: 12px;
   color: var(--color-text);
-  font-size: 16px;
+  text-decoration: underline;
   font-weight: 600;
-  display: block;
-  padding: 12px 16px;
-  border-radius: 4px;
-  transition: all 0.2s ease;
 }
-.dashboard-strict__nav a:hover,
-.dashboard-strict__nav a.active {
-  background-color: #FAFAFA;
-  border-left: 4px solid var(--color-primary-btn);
-}
-.dashboard-strict__main {
-  flex: 1;
-}
-.dashboard-strict__header {
-  margin-bottom: 40px;
-}
-.dashboard-strict__header h1 {
-  font-size: 44px;
-  letter-spacing: -1px;
-  margin-bottom: 12px;
-}
-.dashboard-strict__header p {
-  font-size: 18px;
-  opacity: 0.9;
-}
-.dashboard-strict__orders table {
+.activity-table {
   width: 100%;
   border-collapse: collapse;
 }
-.dashboard-strict__orders th {
+.activity-table th {
   text-align: left;
-  padding: 20px;
-  background-color: #FAFAFA;
-  border-bottom: 2px solid var(--color-borders);
-  font-weight: 700;
+  font-size: 10px;
   text-transform: uppercase;
-  font-size: 14px;
   letter-spacing: 1px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid var(--color-borders);
+  color: var(--color-text);
+  opacity: 0.6;
 }
-.dashboard-strict__orders td {
-  padding: 20px;
-  border-bottom: 1px solid rgba(0,31,63,0.1);
-  font-size: 16px;
+.activity-table td {
+  padding: 24px 0;
+  border-bottom: 1px solid var(--color-borders);
+  font-size: 14px;
   font-weight: 500;
 }
-.status-badge {
-  background-color: var(--color-primary-btn);
+.activity-table a {
+  color: var(--color-text);
+  font-weight: 700;
+  text-decoration: none;
+}
+.activity-table a:hover {
+  text-decoration: underline;
+}
+.status-pill {
   padding: 6px 12px;
   border-radius: 20px;
-  font-size: 12px;
+  font-size: 11px;
   font-weight: 700;
-  text-transform: uppercase;
-  border: 1px solid var(--color-borders);
+  letter-spacing: 0.5px;
 }
-.dashboard-strict__empty {
-  text-align: center;
-  padding: 80px 0;
-  background-color: #FAFAFA;
-  border: 1px dashed var(--color-borders);
-  border-radius: 4px;
+.status-transit {
+  background-color: #FFF3CD;
+  color: #856404;
 }
-.dashboard-strict__empty p {
-  font-size: 20px;
-  margin-bottom: 30px;
+.status-delivered {
+  background-color: var(--color-primary-btn);
+  color: var(--color-text);
 }
-@media (max-width: 990px) {
+
+@media (max-width: 900px) {
   .dashboard-strict {
     flex-direction: column;
-    padding: 40px 0;
   }
-  .dashboard-strict__sidebar {
+  .dashboard-sidebar {
     width: 100%;
     border-right: none;
-    border-bottom: 2px solid var(--color-borders);
+    border-bottom: 1px solid var(--color-borders);
     padding-right: 0;
     padding-bottom: 40px;
   }
-  .dashboard-strict__orders th, 
-  .dashboard-strict__orders td {
-    padding: 15px 10px;
+  .dashboard-stats {
+    grid-template-columns: 1fr;
+  }
+  .activity-table, .activity-table tbody, .activity-table tr, .activity-table td {
+    display: block;
+    width: 100%;
+  }
+  .activity-table thead {
+    display: none;
+  }
+  .activity-table tr {
+    border-bottom: 1px solid var(--color-borders);
+    padding: 16px 0;
+  }
+  .activity-table td {
+    padding: 8px 0;
+    border: none;
+    display: flex;
+    justify-content: space-between;
+  }
+  .activity-table td::before {
+    content: attr(data-label);
+    font-weight: 700;
+    font-size: 10px;
+    opacity: 0.6;
+    letter-spacing: 1px;
   }
 }
 </style>
 
 {% schema %}
 {
-  "name": "Dashboard strict",
+  "name": "Dashboard Strict",
   "settings": []
 }
 {% endschema %}
