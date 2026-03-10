@@ -1,0 +1,128 @@
+<div class="collection-main-strict container">
+  <header class="collection-main-strict__header">
+    <h1 class="collection-main-strict__title">{{ collection.title }}</h1>
+    {% if collection.description != blank %}
+      <div class="collection-main-strict__description rte">
+        {{ collection.description }}
+      </div>
+    {% endif %}
+  </header>
+
+  <div class="collection-main-strict__grid">
+    {% for product in collection.products %}
+      <div class="product-card-strict">
+        <a href="{{ product.url | within: collection }}" class="product-card-strict__link">
+          <div class="product-card-strict__image-wrapper">
+            <img src="{{ product.featured_image | img_url: '600x' }}" alt="{{ product.title | escape }}" class="product-card-strict__image">
+          </div>
+          <div class="product-card-strict__info">
+            <h3 class="product-card-strict__title">{{ product.title }}</h3>
+            <span class="product-card-strict__price">{{ product.price | money }}</span>
+          </div>
+        </a>
+      </div>
+    {% else %}
+      <div class="collection-main-strict__empty">
+        <p>No devices found in this collection.</p>
+      </div>
+    {% endfor %}
+  </div>
+
+  {% if paginate.pages > 1 %}
+    <div class="pagination-strict">
+      {{ paginate | default_pagination }}
+    </div>
+  {% endif %}
+</div>
+
+<style>
+.collection-main-strict {
+  padding: 80px 0;
+}
+.collection-main-strict__header {
+  text-align: center;
+  margin-bottom: 80px;
+}
+.collection-main-strict__title {
+  font-size: 56px;
+  letter-spacing: -1px;
+  margin-bottom: 24px;
+}
+.collection-main-strict__description {
+  font-size: 20px;
+  max-width: 800px;
+  margin: 0 auto;
+  line-height: 1.6;
+  opacity: 0.9;
+}
+.collection-main-strict__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 60px 40px;
+}
+.product-card-strict__link {
+  text-decoration: none;
+  color: var(--color-text);
+  display: block;
+}
+.product-card-strict__image-wrapper {
+  background-color: #FAFAFA;
+  border: 1px solid var(--color-borders);
+  border-radius: 4px;
+  margin-bottom: 24px;
+  overflow: hidden;
+  position: relative;
+  padding-top: 100%; /* Square aspect ratio strictly maintained */
+}
+.product-card-strict__image {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.4s ease;
+}
+.product-card-strict__link:hover .product-card-strict__image {
+  transform: scale(1.05);
+}
+.product-card-strict__title {
+  font-size: 22px;
+  margin-bottom: 8px;
+  font-weight: 700;
+}
+.product-card-strict__price {
+  font-size: 18px;
+  font-weight: 600;
+  opacity: 0.8;
+}
+.collection-main-strict__empty {
+  grid-column: 1 / -1;
+  text-align: center;
+  font-size: 20px;
+  padding: 60px 0;
+}
+.pagination-strict {
+  margin-top: 80px;
+  text-align: center;
+}
+@media (max-width: 768px) {
+  .collection-main-strict__header {
+    margin-bottom: 40px;
+  }
+  .collection-main-strict__title {
+    font-size: 40px;
+  }
+  .collection-main-strict__grid {
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 40px 20px;
+  }
+}
+</style>
+
+{% schema %}
+{
+  "name": "Collection strict",
+  "settings": []
+}
+{% endschema %}

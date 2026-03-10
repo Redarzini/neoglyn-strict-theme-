@@ -1,0 +1,10 @@
+{
+  "sections": {
+    "main": {
+      "type": "page-about-strict"
+    }
+  },
+  "order": [
+    "main"
+  ]
+}

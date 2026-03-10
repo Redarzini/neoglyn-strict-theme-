@@ -1,0 +1,73 @@
+<div class="page-strict container">
+  <header class="page-strict__header">
+    <h1 class="page-strict__title">{{ page.title }}</h1>
+  </header>
+  
+  <div class="page-strict__content">
+    <div class="page-strict__text rte">
+      {{ page.content }}
+    </div>
+    
+    <div class="about-strict__mission">
+      <h2>The Neoglyn Standard</h2>
+      <p>Our commitment is strictly to the elevation of beauty technology. We engineer devices that merge clinical efficacy with flawless, minimalist design. No distractions. Just results.</p>
+    </div>
+  </div>
+</div>
+
+<style>
+.page-strict {
+  padding: 100px 0;
+  max-width: 900px;
+  margin: 0 auto;
+}
+.page-strict__header {
+  text-align: center;
+  margin-bottom: 60px;
+}
+.page-strict__title {
+  font-size: 56px;
+  letter-spacing: -1px;
+}
+.page-strict__text {
+  font-size: 20px;
+  line-height: 1.8;
+  color: var(--color-text);
+  margin-bottom: 60px;
+  opacity: 0.9;
+}
+.about-strict__mission {
+  background-color: var(--color-primary-bg);
+  border: 2px solid var(--color-borders);
+  padding: 60px;
+  text-align: center;
+  border-radius: 4px;
+}
+.about-strict__mission h2 {
+  font-size: 32px;
+  margin-bottom: 24px;
+  letter-spacing: -0.5px;
+}
+.about-strict__mission p {
+  font-size: 20px;
+  line-height: 1.6;
+}
+@media (max-width: 768px) {
+  .page-strict {
+    padding: 60px 0;
+  }
+  .page-strict__title {
+    font-size: 40px;
+  }
+  .about-strict__mission {
+    padding: 40px 20px;
+  }
+}
+</style>
+
+{% schema %}
+{
+  "name": "About strict",
+  "settings": []
+}
+{% endschema %}

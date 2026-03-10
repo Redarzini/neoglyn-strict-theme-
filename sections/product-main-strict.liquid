@@ -1,0 +1,170 @@
+<div class="product-main-strict container">
+  <div class="product-main-strict__gallery">
+    <img src="{{ product.featured_image | img_url: 'master' }}" alt="{{ product.title | escape }}" class="product-main-strict__hero-image">
+    <div class="product-main-strict__thumbnails">
+      {% for image in product.images %}
+        <img src="{{ image.src | img_url: '150x' }}" alt="{{ image.alt | escape }}">
+      {% endfor %}
+    </div>
+  </div>
+  
+  <div class="product-main-strict__info">
+    <h1 class="product-main-strict__title">{{ product.title }}</h1>
+    <div class="product-main-strict__price-block">
+      <span class="product-main-strict__price">{{ product.price | money }}</span>
+    </div>
+
+    <!-- Strict Teamdrop Compatibility Form -->
+    {% form 'product', product, id: 'add-to-cart-form', class: 'product-form-strict' %}
+      <input type="hidden" name="id" value="{{ product.selected_or_first_available_variant.id }}">
+      
+      <div class="product-main-strict__quantity">
+        <label for="Quantity">Quantity</label>
+        <input type="number" id="Quantity" name="quantity" value="1" min="1">
+      </div>
+
+      <button type="submit" name="add" id="AddToCart" class="btn btn--primary product-main-strict__add-to-cart">
+        <span id="AddToCartText">Add to Cart - Shop Neoglyn</span>
+      </button>
+    {% endform %}
+    
+    <div class="product-main-strict__description rte">
+      {{ product.description }}
+    </div>
+    
+    <div class="product-main-strict__features">
+      <ul>
+        <li>Clinical Grade Aesthetic Technology</li>
+        <li>1 Year Neoglyn Warranty</li>
+        <li>Free Shipping Worldwide</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<style>
+.product-main-strict {
+  display: flex;
+  gap: 80px;
+  padding: 80px 0;
+  align-items: flex-start;
+}
+.product-main-strict__gallery {
+  width: 50%;
+  position: sticky;
+  top: 100px;
+}
+.product-main-strict__hero-image {
+  width: 100%;
+  border-radius: 4px;
+  border: 1px solid var(--color-borders);
+  margin-bottom: 20px;
+  background-color: #FAFAFA;
+}
+.product-main-strict__thumbnails {
+  display: flex;
+  gap: 15px;
+  overflow-x: auto;
+}
+.product-main-strict__thumbnails img {
+  width: 100px;
+  height: 100px;
+  object-fit: cover;
+  border: 1px solid var(--color-borders);
+  border-radius: 4px;
+  cursor: pointer;
+}
+.product-main-strict__info {
+  width: 50%;
+}
+.product-main-strict__title {
+  font-size: 48px;
+  line-height: 1.1;
+  letter-spacing: -1px;
+  margin-bottom: 24px;
+}
+.product-main-strict__price {
+  font-size: 32px;
+  font-weight: 700;
+  color: var(--color-text);
+}
+.product-main-strict__price-block {
+  margin-bottom: 40px;
+}
+.product-form-strict {
+  margin-bottom: 40px;
+  padding-bottom: 40px;
+  border-bottom: 1px solid var(--color-borders);
+}
+.product-main-strict__quantity {
+  margin-bottom: 24px;
+}
+.product-main-strict__quantity label {
+  display: block;
+  font-size: 14px;
+  font-weight: 700;
+  text-transform: uppercase;
+  margin-bottom: 10px;
+}
+.product-main-strict__quantity input {
+  padding: 12px;
+  border: 1px solid var(--color-borders);
+  border-radius: 4px;
+  width: 120px;
+  font-size: 16px;
+  text-align: center;
+}
+.product-main-strict__add-to-cart {
+  width: 100%;
+  padding: 20px;
+  font-size: 18px;
+  font-weight: 800;
+}
+.product-main-strict__description {
+  font-size: 18px;
+  line-height: 1.8;
+  color: var(--color-text);
+  margin-bottom: 40px;
+}
+.product-main-strict__features ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.product-main-strict__features li {
+  padding: 16px 0;
+  border-bottom: 1px solid rgba(0,31,63,0.1);
+  font-size: 16px;
+  font-weight: 600;
+  position: relative;
+  padding-left: 30px;
+}
+.product-main-strict__features li:before {
+  content: "✓";
+  position: absolute;
+  left: 0;
+  color: var(--color-primary-btn);
+}
+
+@media (max-width: 990px) {
+  .product-main-strict {
+    flex-direction: column;
+    gap: 40px;
+    padding: 40px 0;
+  }
+  .product-main-strict__gallery, 
+  .product-main-strict__info {
+    width: 100%;
+  }
+  .product-main-strict__gallery {
+    position: static;
+  }
+}
+</style>
+
+{% schema %}
+{
+  "name": "Product strict",
+  "settings": []
+}
+{% endschema %}

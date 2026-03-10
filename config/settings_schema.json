@@ -1,0 +1,36 @@
+[
+  {
+    "name": "Colors",
+    "theme_name": "Neoglyn Strict Replication",
+    "theme_author": "Antigravity",
+    "theme_version": "1.0.0",
+    "theme_support_url": "https://github.com/",
+    "theme_documentation_url": "https://github.com/"
+  },
+  {
+    "name": "Brand Colors (Do Not Deviate)",
+    "settings": [
+      {
+        "type": "color",
+        "id": "colors_background",
+        "label": "Primary Background",
+        "default": "#FFFFFF",
+        "info": "Strictly White. Do not alter."
+      },
+      {
+        "type": "color",
+        "id": "colors_text",
+        "label": "Typography, Icons & Borders",
+        "default": "#001F3F",
+        "info": "Midnight Blue. Do not alter."
+      },
+      {
+        "type": "color",
+        "id": "colors_button",
+        "label": "Primary Button",
+        "default": "#82D9B9",
+        "info": "Bright Mint. Do not alter."
+      }
+    ]
+  }
+]

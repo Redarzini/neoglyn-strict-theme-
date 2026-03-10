@@ -1,0 +1,14 @@
+{
+  "sections": {
+    "hero": {
+      "type": "hero-strict"
+    },
+    "featured-collection": {
+      "type": "featured-collection-strict"
+    }
+  },
+  "order": [
+    "hero",
+    "featured-collection"
+  ]
+}

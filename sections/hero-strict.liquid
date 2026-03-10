@@ -1,0 +1,136 @@
+<div class="hero-strict">
+  <div class="container hero-strict__inner">
+    <div class="hero-strict__content">
+      <h1 class="hero-strict__heading">{{ section.settings.heading | default: "Clinical Beauty, Elevated." }}</h1>
+      <p class="hero-strict__subheading">{{ section.settings.subheading | default: "Discover the Neoglyn standard in exact, precision-engineered beauty devices." }}</p>
+      <a href="{{ section.settings.button_link | default: '/collections/all' }}" class="btn hero-strict__btn">
+        {{ section.settings.button_text | default: "Shop The Collection" }}
+      </a>
+    </div>
+    <div class="hero-strict__image-container">
+      {% if section.settings.image != blank %}
+        <img src="{{ section.settings.image | img_url: 'master' }}" alt="{{ section.settings.heading | escape }}" class="hero-strict__image">
+      {% else %}
+        <div class="hero-strict__placeholder">Design Placeholder</div>
+      {% endif %}
+    </div>
+  </div>
+</div>
+
+<style>
+.hero-strict {
+  background-color: var(--color-primary-bg);
+  padding: 100px 0;
+  border-bottom: 1px solid var(--color-borders);
+  overflow: hidden;
+}
+.hero-strict__inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 80px;
+}
+.hero-strict__content {
+  flex: 1;
+  max-width: 600px;
+}
+.hero-strict__heading {
+  font-size: 72px;
+  line-height: 1.05;
+  letter-spacing: -2px;
+  margin-bottom: 30px;
+}
+.hero-strict__subheading {
+  font-size: 22px;
+  line-height: 1.6;
+  margin-bottom: 40px;
+  opacity: 0.9;
+}
+.hero-strict__btn {
+  font-size: 18px;
+  padding: 20px 40px;
+}
+.hero-strict__image-container {
+  flex: 1;
+  position: relative;
+}
+.hero-strict__image {
+  width: 100%;
+  height: auto;
+  border-radius: 4px;
+  border: 1px solid var(--color-borders);
+  box-shadow: 20px 20px 0px var(--color-primary-btn); /* Strict replication accent shadow */
+}
+.hero-strict__placeholder {
+  width: 100%;
+  aspect-ratio: 4/5;
+  background-color: #FAFAFA;
+  border: 1px solid var(--color-borders);
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 24px;
+  color: var(--color-text);
+  box-shadow: 20px 20px 0px var(--color-primary-btn);
+}
+
+@media (max-width: 990px) {
+  .hero-strict {
+    padding: 60px 0;
+  }
+  .hero-strict__inner {
+    flex-direction: column;
+    text-align: center;
+    gap: 60px;
+  }
+  .hero-strict__content {
+    max-width: 100%;
+  }
+  .hero-strict__heading {
+    font-size: 50px;
+  }
+  .hero-strict__image-container {
+    padding: 0 20px 20px 0; /* Accommodate shadow */
+    width: 100%;
+  }
+}
+</style>
+
+{% schema %}
+{
+  "name": "Hero Strict",
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading"
+    },
+    {
+      "type": "textarea",
+      "id": "subheading",
+      "label": "Subheading"
+    },
+    {
+      "type": "text",
+      "id": "button_text",
+      "label": "Button Text"
+    },
+    {
+      "type": "url",
+      "id": "button_link",
+      "label": "Button Link"
+    },
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Image"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Hero Strict"
+    }
+  ]
+}
+{% endschema %}

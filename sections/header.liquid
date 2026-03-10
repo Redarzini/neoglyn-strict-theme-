@@ -1,0 +1,108 @@
+<header class="site-header" role="banner">
+  <div class="container site-header__inner">
+    <div class="site-header__logo">
+      <a href="{{ routes.root_url }}">
+        {% if section.settings.logo != blank %}
+          <img src="{{ section.settings.logo | img_url: 'master' }}" alt="{{ section.settings.logo.alt | default: shop.name }}" width="{{ section.settings.logo_max_width }}">
+        {% else %}
+          <span class="h2">{{ shop.name }}</span>
+        {% endif %}
+      </a>
+    </div>
+
+    <nav class="site-header__nav" role="navigation">
+      <ul class="site-header__menu">
+        {% for link in section.settings.menu.links %}
+          <li><a href="{{ link.url }}">{{ link.title }}</a></li>
+        {% endfor %}
+      </ul>
+    </nav>
+    
+    <div class="site-header__icons">
+      <a href="{{ routes.cart_url }}" class="site-header__cart">
+        Cart ({% if cart.item_count > 0 %}{{ cart.item_count }}{% else %}0{% endif %})
+      </a>
+    </div>
+  </div>
+</header>
+
+<style>
+.site-header {
+  background-color: var(--color-primary-bg);
+  border-bottom: 2px solid var(--color-borders);
+  padding: 20px 0;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+.site-header__inner {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.site-header__logo a {
+  text-decoration: none;
+  color: var(--color-text);
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  font-size: 24px;
+}
+.site-header__menu {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  gap: 40px;
+}
+.site-header__menu a {
+  text-decoration: none;
+  color: var(--color-text);
+  font-weight: 600;
+  text-transform: uppercase;
+  font-size: 14px;
+  letter-spacing: 1px;
+}
+.site-header__cart {
+  text-decoration: none;
+  color: var(--color-text);
+  font-weight: 700;
+  text-transform: uppercase;
+  font-size: 14px;
+  letter-spacing: 1px;
+}
+@media (max-width: 768px) {
+  .site-header__menu {
+    display: none; /* Hide on mobile to match Stitch mobile drawer patterns */
+  }
+}
+</style>
+
+{% schema %}
+{
+  "name": "Header Strict",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "logo",
+      "label": "Logo image"
+    },
+    {
+      "type": "range",
+      "id": "logo_max_width",
+      "min": 50,
+      "max": 250,
+      "step": 10,
+      "unit": "px",
+      "label": "Custom logo width",
+      "default": 140
+    },
+    {
+      "type": "link_list",
+      "id": "menu",
+      "default": "main-menu",
+      "label": "Menu"
+    }
+  ]
+}
+{% endschema %}

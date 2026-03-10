@@ -1,0 +1,125 @@
+<div class="page-strict container">
+  <header class="page-strict__header">
+    <h1 class="page-strict__title">{{ page.title }}</h1>
+  </header>
+  
+  <div class="page-strict__content rte">
+    {{ page.content }}
+  </div>
+
+  <div class="contact-strict__form-wrapper">
+    {% form 'contact', class: 'contact-strict__form' %}
+      {% if form.posted_successfully? %}
+        <div class="contact-strict__success">Your message has been received by Neoglyn Support.</div>
+      {% endif %}
+
+      {{ form.errors | default_errors }}
+
+      <div class="contact-strict__field-group">
+        <div class="contact-strict__field">
+          <label for="ContactFormName">Name</label>
+          <input type="text" id="ContactFormName" name="contact[name]" value="{% if form.name %}{{ form.name }}{% elsif customer %}{{ customer.name }}{% endif %}">
+        </div>
+
+        <div class="contact-strict__field">
+          <label for="ContactFormEmail">Email</label>
+          <input type="email" id="ContactFormEmail" name="contact[email]" autocorrect="off" autocapitalize="off" value="{% if form.email %}{{ form.email }}{% elsif customer %}{{ customer.email }}{% endif %}">
+        </div>
+      </div>
+
+      <div class="contact-strict__field">
+        <label for="ContactFormSubject">Subject / Device Name</label>
+        <input type="text" id="ContactFormSubject" name="contact[subject]">
+      </div>
+
+      <div class="contact-strict__field">
+        <label for="ContactFormMessage">Message</label>
+        <textarea rows="10" id="ContactFormMessage" name="contact[body]">{% if form.body %}{{ form.body }}{% endif %}</textarea>
+      </div>
+
+      <button type="submit" class="btn contact-strict__submit">Submit Inquiry</button>
+    {% endform %}
+  </div>
+</div>
+
+<style>
+.page-strict {
+  padding: 100px 0;
+  max-width: 900px;
+  margin: 0 auto;
+}
+.page-strict__header {
+  text-align: center;
+  margin-bottom: 60px;
+}
+.page-strict__title {
+  font-size: 56px;
+  letter-spacing: -1px;
+}
+.contact-strict__form-wrapper {
+  margin-top: 60px;
+}
+.contact-strict__field-group {
+  display: flex;
+  gap: 30px;
+}
+.contact-strict__field-group .contact-strict__field {
+  flex: 1;
+}
+.contact-strict__field {
+  margin-bottom: 30px;
+}
+.contact-strict__field label {
+  display: block;
+  margin-bottom: 12px;
+  font-weight: 700;
+  font-size: 14px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+.contact-strict__field input, 
+.contact-strict__field textarea {
+  width: 100%;
+  padding: 18px;
+  border: 1px solid var(--color-borders);
+  border-radius: 4px;
+  font-family: inherit;
+  font-size: 16px;
+  background-color: var(--color-primary-bg);
+  color: var(--color-text);
+  transition: box-shadow 0.2s ease;
+}
+.contact-strict__field input:focus, 
+.contact-strict__field textarea:focus {
+  outline: none;
+  box-shadow: 4px 4px 0px var(--color-primary-btn);
+}
+.contact-strict__success {
+  background-color: var(--color-primary-btn);
+  color: var(--color-text);
+  padding: 20px;
+  border-radius: 4px;
+  margin-bottom: 30px;
+  font-weight: 700;
+  text-align: center;
+  border: 1px solid var(--color-borders);
+}
+.contact-strict__submit {
+  width: 100%;
+  font-size: 18px;
+  padding: 20px;
+}
+@media (max-width: 768px) {
+  .contact-strict__field-group {
+    flex-direction: column;
+    gap: 0;
+  }
+}
+</style>
+
+{% schema %}
+{
+  "name": "Contact strict",
+  "settings": []
+}
+{% endschema %}

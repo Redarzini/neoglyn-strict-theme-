@@ -1,0 +1,70 @@
+/* Exact CSS Variables for Neoglyn Replication */
+:root {
+  --color-primary-bg: #FFFFFF;
+  --color-text: #001F3F;
+  --color-borders: #001F3F;
+  --color-primary-btn: #82D9B9;
+  --color-primary-btn-text: #001F3F;
+  
+  --font-body: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  --font-heading: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+}
+
+body {
+  background-color: var(--color-primary-bg);
+  color: var(--color-text);
+  font-family: var(--font-body);
+  margin: 0;
+  padding: 0;
+  -webkit-font-smoothing: antialiased;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  color: var(--color-text);
+  font-family: var(--font-heading);
+  margin-top: 0;
+  font-weight: 700;
+}
+
+.button, .btn {
+  background-color: var(--color-primary-btn);
+  color: var(--color-primary-btn-text);
+  border: none;
+  padding: 16px 24px;
+  cursor: pointer;
+  font-weight: 700;
+  text-decoration: none;
+  display: inline-block;
+  text-align: center;
+  border-radius: 4px; /* Default radius, adjust inline for specific exact matching */
+  transition: opacity 0.2s ease;
+  font-size: 16px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.button:hover, .btn:hover {
+  opacity: 0.9;
+}
+
+.button--outline {
+  background-color: transparent;
+  border: 2px solid var(--color-borders);
+  color: var(--color-text);
+}
+
+.container {
+  max-width: 1440px; /* Adapting for wide desktop designs found in Stitch screens */
+  margin: 0 auto;
+  padding: 0 40px;
+}
+
+@media (max-width: 768px) {
+  .container {
+    padding: 0 20px;
+  }
+}
