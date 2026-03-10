@@ -1,10 +1,13 @@
-/* Exact CSS Variables for Neoglyn Replication */
+/* Neoglyn Strict 1:1 Variables based on final Screenshots */
 :root {
   --color-primary-bg: #FFFFFF;
-  --color-text: #001F3F;
-  --color-borders: #001F3F;
-  --color-primary-btn: #82D9B9;
+  --color-text: #001F3F; /* Midnight Blue */
+  --color-borders: #E0E0E0; /* Lighter border for clean look */
+  --color-primary-btn: #82D9B9; /* Bright Mint */
   --color-primary-btn-text: #001F3F;
+  --color-secondary-bg: #F8F9FA; /* Subtle gray background for sections */
+  --color-dark-bg: #001F3F; /* Dark background section */
+  --color-dark-text: #FFFFFF; /* Text on dark bg */
   
   --font-body: 'Helvetica Neue', Helvetica, Arial, sans-serif;
   --font-heading: 'Helvetica Neue', Helvetica, Arial, sans-serif;
@@ -17,6 +20,7 @@ body {
   margin: 0;
   padding: 0;
   -webkit-font-smoothing: antialiased;
+  line-height: 1.6;
 }
 
 * {
@@ -27,40 +31,65 @@ h1, h2, h3, h4, h5, h6 {
   color: var(--color-text);
   font-family: var(--font-heading);
   margin-top: 0;
-  font-weight: 700;
+  font-weight: 800;
+  letter-spacing: -0.5px;
 }
 
-.button, .btn {
+/* Base Button Style from Screenshot */
+.btn {
   background-color: var(--color-primary-btn);
   color: var(--color-primary-btn-text);
   border: none;
-  padding: 16px 24px;
+  padding: 14px 28px;
   cursor: pointer;
   font-weight: 700;
   text-decoration: none;
   display: inline-block;
   text-align: center;
-  border-radius: 4px; /* Default radius, adjust inline for specific exact matching */
-  transition: opacity 0.2s ease;
-  font-size: 16px;
+  border-radius: 50px; /* Pill-shaped buttons seen in the screenshot */
+  transition: opacity 0.2s ease, transform 0.2s ease;
+  font-size: 14px;
   text-transform: uppercase;
   letter-spacing: 1px;
 }
 
-.button:hover, .btn:hover {
+.btn:hover {
   opacity: 0.9;
+  transform: translateY(-2px);
 }
 
-.button--outline {
+.btn--outline {
   background-color: transparent;
-  border: 2px solid var(--color-borders);
+  border: 1px solid var(--color-text);
   color: var(--color-text);
 }
 
+.btn--dark {
+  background-color: var(--color-dark-bg);
+  color: var(--color-dark-text);
+}
+
 .container {
-  max-width: 1440px; /* Adapting for wide desktop designs found in Stitch screens */
+  max-width: 1200px;
   margin: 0 auto;
   padding: 0 40px;
+}
+
+/* Typography Utilities */
+.text-center { text-align: center; }
+.caption {
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  font-weight: 700;
+  color: var(--color-primary-btn); /* Mint accents often used for small captions */
+  margin-bottom: 16px;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+.caption--dark {
+  color: var(--color-text);
 }
 
 @media (max-width: 768px) {

@@ -1,0 +1,238 @@
+<div class="clinical-results-wrapper">
+  <div class="clinical-results-strict container">
+    <div class="results-layout">
+      
+      <!-- Left side: Images -->
+      <div class="results-images">
+        <div class="results-card results-card--before">
+          <div class="results-card__badge">DAY 1</div>
+          <div class="results-card__placeholder">BEFORE DEVICE INTERVENTION</div>
+        </div>
+        
+        <div class="results-card results-card--after">
+          <div class="results-card__badge results-card__badge--mint">DAY 30</div>
+          <div class="results-card__image-container">
+            <img src="https://via.placeholder.com/300x400/FFFFFF/001F3F?text=After" alt="After 30 days">
+          </div>
+          
+          <div class="results-stats-overlay">
+            <div class="stat-box">
+              <div class="stat-number">-45%</div>
+              <div class="stat-label">WRINKLE DEPTH</div>
+            </div>
+            <div class="stat-box stat-box--highlight">
+              <div class="stat-number">+82%</div>
+              <div class="stat-label">SKIN LUMINOSITY</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Right side: Text Content -->
+      <div class="results-content">
+        <div class="caption caption--mint">CLINICAL RESULTS</div>
+        <h2 class="results-content__title">Real people.<br>Verified data.</h2>
+        
+        <div class="results-quote">
+          <p>"I was skeptical about home devices, but after 30 days of consistent Lumina use, my jawline is more defined and the fine lines around my eyes have visibly softened."</p>
+        </div>
+        
+        <div class="results-user">
+          <div class="user-avatar"></div>
+          <div>
+            <div class="user-name">Sarah Jenkins</div>
+            <div class="user-desc">VERIFIED USER • 4 WEEKS</div>
+          </div>
+        </div>
+        
+        <a href="/pages/science" class="results-link">SEE MORE CASE STUDIES <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg></a>
+      </div>
+      
+    </div>
+  </div>
+</div>
+
+<style>
+.clinical-results-wrapper {
+  background-color: var(--color-dark-bg);
+  color: var(--color-dark-text);
+  padding: 100px 0;
+  border-top-left-radius: 60px;
+  border-top-right-radius: 60px;
+  margin-top: 60px;
+}
+.clinical-results-strict h2 {
+  color: var(--color-dark-text);
+}
+.results-layout {
+  display: flex;
+  align-items: center;
+  gap: 80px;
+}
+.results-images {
+  flex: 1;
+  position: relative;
+  display: flex;
+  gap: 20px;
+  align-items: flex-start;
+}
+.results-card {
+  flex: 1;
+  border-radius: 12px;
+  position: relative;
+  overflow: hidden;
+}
+.results-card--before {
+  background-color: #E6E6E6;
+  aspect-ratio: 3/4;
+  margin-top: 40px;
+}
+.results-card--after {
+  background-color: #FFFFFF;
+  margin-bottom: 40px;
+}
+.results-card__image-container {
+  aspect-ratio: 3/4;
+}
+.results-card__image-container img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.results-card__placeholder {
+  position: absolute;
+  bottom: 20px;
+  left: 20px;
+  right: 20px;
+  color: var(--color-text);
+  font-size: 10px;
+  letter-spacing: 1px;
+  font-weight: 700;
+}
+.results-card__badge {
+  position: absolute;
+  top: 16px;
+  left: 16px;
+  background-color: rgba(0,0,0,0.4);
+  color: white;
+  padding: 4px 10px;
+  border-radius: 4px;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  z-index: 10;
+}
+.results-card__badge--mint {
+  background-color: var(--color-primary-btn);
+  color: var(--color-text);
+}
+
+.results-stats-overlay {
+  position: absolute;
+  bottom: -40px;
+  left: -20px; /* Overlap effect from the screenshot */
+  right: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  z-index: 20;
+}
+.stat-box {
+  background-color: #00152B; /* Deep Navy */
+  padding: 20px;
+  border-radius: 8px;
+  width: 90%;
+}
+.stat-box--highlight {
+  background-color: #002B4A; /* Slightly lighter navy */
+  margin-left: 10%;
+}
+.stat-number {
+  font-size: 32px;
+  font-weight: 800;
+  color: var(--color-primary-btn);
+  margin-bottom: 4px;
+}
+.stat-label {
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-weight: 700;
+  opacity: 0.8;
+}
+
+.results-content {
+  flex: 1;
+  max-width: 500px;
+}
+.caption--mint {
+  color: var(--color-primary-btn);
+}
+.results-content__title {
+  font-size: 56px;
+  line-height: 1.1;
+  margin-bottom: 40px;
+  letter-spacing: -1px;
+}
+.results-quote {
+  font-size: 18px;
+  line-height: 1.7;
+  margin-bottom: 40px;
+  opacity: 0.9;
+}
+.results-user {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 40px;
+}
+.user-avatar {
+  width: 40px;
+  height: 40px;
+  background-color: #A3C4D3;
+  border-radius: 50%;
+}
+.user-name {
+  font-size: 14px;
+  font-weight: 700;
+  margin-bottom: 4px;
+}
+.user-desc {
+  font-size: 10px;
+  color: var(--color-primary-btn);
+  letter-spacing: 1px;
+  font-weight: 700;
+}
+.results-link {
+  color: var(--color-primary-btn);
+  text-decoration: none;
+  font-weight: 700;
+  font-size: 14px;
+  letter-spacing: 1px;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  text-transform: uppercase;
+}
+.results-link:hover {
+  text-decoration: underline;
+}
+
+@media (max-width: 990px) {
+  .results-layout {
+    flex-direction: column-reverse;
+  }
+}
+</style>
+
+{% schema %}
+{
+  "name": "Clinical Results Strict",
+  "settings": [],
+  "presets": [
+    {
+      "name": "Clinical Results Strict"
+    }
+  ]
+}
+{% endschema %}

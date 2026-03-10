@@ -3,12 +3,20 @@
     "hero": {
       "type": "hero-strict"
     },
+    "advantages": {
+      "type": "advantages-strict"
+    },
     "featured-collection": {
       "type": "featured-collection-strict"
+    },
+    "clinical-results": {
+      "type": "clinical-results-strict"
     }
   },
   "order": [
     "hero",
-    "featured-collection"
+    "advantages",
+    "featured-collection",
+    "clinical-results"
   ]
 }

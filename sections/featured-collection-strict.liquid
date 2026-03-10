@@ -1,0 +1,157 @@
+<div class="featured-products-strict container">
+  <div class="featured-products-strict__header">
+    <div>
+      <div class="caption caption--dark">FEATURED PRODUCTS</div>
+      <h2>The Routine</h2>
+    </div>
+    <div class="featured-nav">
+      <button class="nav-arrow"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="15 18 9 12 15 6"></polyline></svg></button>
+      <button class="nav-arrow"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"></polyline></svg></button>
+    </div>
+  </div>
+  
+  <div class="featured-grid">
+    <!-- Product 1 -->
+    <div class="product-card">
+      <div class="product-card__image-container">
+        <span class="product-badge">BEST SELLER</span>
+        <img src="https://via.placeholder.com/400x500/FAFAFA/001F3F?text=Lumina+Pro" alt="Lumina Pro">
+      </div>
+      <div class="product-card__info">
+        <div>
+          <h3>Neoglyn Lumina Pro</h3>
+          <p>Full System Facial Device</p>
+        </div>
+        <div class="product-card__price">$499</div>
+      </div>
+    </div>
+    
+    <!-- Product 2 -->
+    <div class="product-card">
+      <div class="product-card__image-container">
+        <img src="https://via.placeholder.com/400x500/F5D0C5/001F3F?text=Serum" alt="Conductive Repair Serum">
+      </div>
+      <div class="product-card__info">
+        <div>
+          <h3>Conductive Repair Serum</h3>
+          <p>Hyaluronic + Peptide complex</p>
+        </div>
+        <div class="product-card__price">$85</div>
+      </div>
+    </div>
+    
+    <!-- Product 3 -->
+    <div class="product-card">
+      <div class="product-card__image-container">
+        <img src="https://via.placeholder.com/400x500/EBEBEB/001F3F?text=Travel+Kit" alt="Minimalist Travel Kit">
+      </div>
+      <div class="product-card__info">
+        <div>
+          <h3>Minimalist Travel Kit</h3>
+          <p>Hard-shell device protector</p>
+        </div>
+        <!-- Price hidden intentionally based on screenshot design -->
+      </div>
+    </div>
+  </div>
+</div>
+
+<style>
+.featured-products-strict {
+  padding: 60px 0 100px;
+}
+.featured-products-strict__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  margin-bottom: 40px;
+}
+.featured-products-strict__header h2 {
+  font-size: 36px;
+  margin: 0;
+}
+.featured-nav {
+  display: flex;
+  gap: 12px;
+}
+.nav-arrow {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: 1px solid var(--color-borders);
+  background: transparent;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  color: var(--color-text);
+  transition: all 0.2s ease;
+}
+.nav-arrow:hover {
+  border-color: var(--color-text);
+}
+.featured-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 30px;
+}
+.product-card__image-container {
+  border-radius: 12px;
+  overflow: hidden;
+  margin-bottom: 20px;
+  position: relative;
+  aspect-ratio: 4/5;
+}
+.product-card__image-container img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.product-badge {
+  position: absolute;
+  top: 16px;
+  left: 16px;
+  background: var(--color-primary-bg);
+  font-size: 10px;
+  font-weight: 700;
+  padding: 6px 10px;
+  border-radius: 4px;
+  letter-spacing: 1px;
+}
+.product-card__info {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+.product-card__info h3 {
+  font-size: 16px;
+  margin-bottom: 4px;
+}
+.product-card__info p {
+  font-size: 12px;
+  color: var(--color-text);
+  opacity: 0.6;
+  margin: 0;
+}
+.product-card__price {
+  font-weight: 700;
+  font-size: 16px;
+}
+@media (max-width: 900px) {
+  .featured-grid {
+    grid-template-columns: 1fr;
+  }
+}
+</style>
+
+{% schema %}
+{
+  "name": "Featured Products Strict",
+  "settings": [],
+  "presets": [
+    {
+      "name": "Featured Products Strict"
+    }
+  ]
+}
+{% endschema %}
