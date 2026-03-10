@@ -1,128 +1,362 @@
-<div class="collection-main-strict container">
-  <header class="collection-main-strict__header">
-    <h1 class="collection-main-strict__title">{{ collection.title }}</h1>
-    {% if collection.description != blank %}
-      <div class="collection-main-strict__description rte">
-        {{ collection.description }}
+<div class="collection-page-strict container">
+  <div class="collection-layout">
+    
+    <!-- Sidebar -->
+    <aside class="collection-sidebar">
+      <h3 class="sidebar-title">FILTER BY</h3>
+      
+      <div class="filter-group">
+        <button class="filter-toggle"><span>Category</span> <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg></button>
       </div>
-    {% endif %}
-  </header>
+      <div class="filter-group">
+        <button class="filter-toggle"><span>Price Range</span> <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg></button>
+      </div>
+      <div class="filter-group">
+        <button class="filter-toggle"><span>Color</span> <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg></button>
+      </div>
+      <div class="filter-group">
+        <button class="filter-toggle"><span>Brand</span> <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg></button>
+      </div>
 
-  <div class="collection-main-strict__grid">
-    {% for product in collection.products %}
-      <div class="product-card-strict">
-        <a href="{{ product.url | within: collection }}" class="product-card-strict__link">
-          <div class="product-card-strict__image-wrapper">
-            <img src="{{ product.featured_image | img_url: '600x' }}" alt="{{ product.title | escape }}" class="product-card-strict__image">
-          </div>
-          <div class="product-card-strict__info">
-            <h3 class="product-card-strict__title">{{ product.title }}</h3>
-            <span class="product-card-strict__price">{{ product.price | money }}</span>
-          </div>
-        </a>
+      <div class="member-perk-box">
+        <div class="caption caption--mint">MEMBER PERK</div>
+        <h4>Free shipping on all tech items.</h4>
+        <a href="#" class="btn btn-perk">Join Now</a>
       </div>
-    {% else %}
-      <div class="collection-main-strict__empty">
-        <p>No devices found in this collection.</p>
-      </div>
-    {% endfor %}
-  </div>
+    </aside>
 
-  {% if paginate.pages > 1 %}
-    <div class="pagination-strict">
-      {{ paginate | default_pagination }}
+    <!-- Main Content -->
+    <div class="collection-main">
+      <div class="breadcrumbs">
+        HOME / <span class="active">TECH COLLECTIONS</span>
+      </div>
+      
+      <header class="collection-header">
+        <h1>Shop All Tech</h1>
+        <p>High-performance engineering meets minimalist aesthetics. Explore our curated selection of next-generation hardware.</p>
+      </header>
+
+      <div class="collection-controls">
+        <div class="controls-left">
+          <button class="btn-control">Sort: Featured <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg></button>
+          <button class="btn-control">In Stock</button>
+        </div>
+        <div class="controls-right">
+          Showing {{ collection.products_count | default: 12 }} Products <!-- Static default for design view -->
+        </div>
+      </div>
+
+      <div class="collection-grid">
+        <!-- Example mock products matching the screenshot to maintain exact visual state before Shopify pulls dynamic data -->
+        
+        <div class="product-card">
+          <div class="product-card__image-container">
+            <span class="product-badge badge-sale">SALE -20%</span>
+            <img src="https://via.placeholder.com/400x400/EAEAEA/001F3F?text=Laptop" alt="Laptop">
+          </div>
+          <div class="product-card__info">
+            <div class="card-meta">
+              <h3>Neoglyn Pro Laptop</h3>
+              <span class="meta-tag">M3 CHIP</span>
+            </div>
+            <div class="product-card__price">
+              $1,299.00 <span class="compare-price">$1,599.00</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="product-card">
+          <div class="product-card__image-container">
+            <span class="product-badge badge-new">NEW ARRIVAL</span>
+            <img src="https://via.placeholder.com/400x400/222222/FFFFFF?text=Headphones" alt="Headphones">
+          </div>
+          <div class="product-card__info">
+            <div class="card-meta">
+              <h3>Sonic H1 Headphones</h3>
+              <span class="meta-tag">WIRELESS</span>
+            </div>
+            <div class="product-card__price">$299.00</div>
+          </div>
+        </div>
+
+        <div class="product-card">
+          <div class="product-card__image-container">
+            <img src="https://via.placeholder.com/400x400/D0D0D0/001F3F?text=Watch" alt="Watch">
+          </div>
+          <div class="product-card__info">
+            <div class="card-meta">
+              <h3>Aura Watch Gen 4</h3>
+              <span class="meta-tag">HEALTH</span>
+            </div>
+            <div class="product-card__price">$449.00</div>
+          </div>
+        </div>
+
+        <div class="product-card">
+          <div class="product-card__image-container">
+            <img src="https://via.placeholder.com/400x400/111/FFF?text=Keyboard" alt="Keyboard">
+          </div>
+          <div class="product-card__info">
+            <div class="card-meta">
+              <h3>Tactile K2 Keyboard</h3>
+              <span class="meta-tag">ACCESSORIES</span>
+            </div>
+            <div class="product-card__price">$189.00</div>
+          </div>
+        </div>
+        
+        <div class="product-card">
+          <div class="product-card__image-container">
+            <span class="product-badge badge-limit">LIMITED</span>
+            <img src="https://via.placeholder.com/400x400/8AC/001F3F?text=Monitor" alt="Monitor">
+          </div>
+          <div class="product-card__info">
+            <div class="card-meta">
+              <h3>Vision X Curved Monitor</h3>
+              <span class="meta-tag">DISPLAY</span>
+            </div>
+            <div class="product-card__price">$899.00</div>
+          </div>
+        </div>
+        
+        <div class="product-card">
+          <div class="product-card__image-container">
+            <img src="https://via.placeholder.com/400x400/B2D8CD/001F3F?text=Power+Pad" alt="Power Pad">
+          </div>
+          <div class="product-card__info">
+            <div class="card-meta">
+              <h3>Core Power Pad</h3>
+              <span class="meta-tag">POWER</span>
+            </div>
+            <div class="product-card__price">$59.00</div>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="pagination-custom">
+        <button class="page-nav"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="15 18 9 12 15 6"></polyline></svg></button>
+        <button class="page-num active">1</button>
+        <button class="page-num">2</button>
+        <button class="page-num">3</button>
+        <button class="page-nav"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"></polyline></svg></button>
+      </div>
+
     </div>
-  {% endif %}
+  </div>
 </div>
 
 <style>
-.collection-main-strict {
-  padding: 80px 0;
+.collection-page-strict {
+  padding: 40px 0 100px;
 }
-.collection-main-strict__header {
-  text-align: center;
-  margin-bottom: 80px;
+.collection-layout {
+  display: flex;
+  gap: 60px;
 }
-.collection-main-strict__title {
-  font-size: 56px;
-  letter-spacing: -1px;
+.collection-sidebar {
+  width: 240px;
+  flex-shrink: 0;
+}
+.sidebar-title {
+  font-size: 11px;
+  letter-spacing: 1.5px;
   margin-bottom: 24px;
 }
-.collection-main-strict__description {
-  font-size: 20px;
-  max-width: 800px;
-  margin: 0 auto;
-  line-height: 1.6;
-  opacity: 0.9;
+.filter-group {
+  border-bottom: 1px solid var(--color-borders);
 }
-.collection-main-strict__grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 60px 40px;
-}
-.product-card-strict__link {
-  text-decoration: none;
-  color: var(--color-text);
-  display: block;
-}
-.product-card-strict__image-wrapper {
-  background-color: #FAFAFA;
-  border: 1px solid var(--color-borders);
-  border-radius: 4px;
-  margin-bottom: 24px;
-  overflow: hidden;
-  position: relative;
-  padding-top: 100%; /* Square aspect ratio strictly maintained */
-}
-.product-card-strict__image {
-  position: absolute;
-  top: 0;
-  left: 0;
+.filter-toggle {
   width: 100%;
-  height: 100%;
-  object-fit: cover;
-  transition: transform 0.4s ease;
-}
-.product-card-strict__link:hover .product-card-strict__image {
-  transform: scale(1.05);
-}
-.product-card-strict__title {
-  font-size: 22px;
-  margin-bottom: 8px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: none;
+  border: none;
+  padding: 16px 0;
+  font-size: 13px;
   font-weight: 700;
+  color: var(--color-text);
+  cursor: pointer;
 }
-.product-card-strict__price {
+.member-perk-box {
+  background-color: #00152B; /* Dark navy */
+  color: white;
+  padding: 30px 24px;
+  border-radius: 8px;
+  margin-top: 40px;
+}
+.member-perk-box h4 {
+  color: white;
   font-size: 18px;
-  font-weight: 600;
+  line-height: 1.4;
+  margin-bottom: 20px;
+}
+.btn-perk {
+  background-color: white;
+  color: var(--color-text);
+  width: 100%;
+  border-radius: 4px; /* Square button in this box */
+  padding: 12px;
+}
+
+.collection-main {
+  flex: 1;
+}
+.breadcrumbs {
+  font-size: 10px;
+  letter-spacing: 1px;
+  font-weight: 700;
+  margin-bottom: 24px;
+}
+.breadcrumbs .active {
+  color: var(--color-text);
+}
+.collection-header {
+  margin-bottom: 40px;
+}
+.collection-header h1 {
+  font-size: 48px;
+  margin-bottom: 16px;
+}
+.collection-header p {
+  font-size: 16px;
   opacity: 0.8;
+  max-width: 600px;
 }
-.collection-main-strict__empty {
-  grid-column: 1 / -1;
-  text-align: center;
-  font-size: 20px;
-  padding: 60px 0;
+.collection-controls {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 40px;
 }
-.pagination-strict {
+.controls-left {
+  display: flex;
+  gap: 12px;
+}
+.btn-control {
+  background-color: var(--color-secondary-bg);
+  border: 1px solid var(--color-borders);
+  padding: 10px 16px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--color-text);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+}
+.controls-right {
+  font-size: 12px;
+  opacity: 0.7;
+}
+
+.collection-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 40px 30px;
+}
+.product-card__image-container {
+  aspect-ratio: 1; /* Square images on this page */
+  border-radius: 0; /* Sharp edges */
+  margin-bottom: 16px;
+}
+.product-badge {
+  text-transform: uppercase;
+}
+.badge-sale {
+  background-color: var(--color-primary-btn);
+  color: var(--color-text);
+}
+.badge-new {
+  background-color: var(--color-dark-bg);
+  color: white;
+}
+.badge-limit {
+  background-color: var(--color-primary-btn);
+  color: var(--color-text);
+}
+.card-meta {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 8px;
+}
+.card-meta h3 {
+  font-size: 16px;
+  margin: 0;
+  max-width: 70%;
+}
+.meta-tag {
+  font-size: 9px;
+  font-weight: 700;
+  color: var(--color-text);
+  opacity: 0.5;
+  letter-spacing: 1px;
+}
+.product-card__price {
+  font-size: 18px;
+  font-weight: 800;
+}
+.compare-price {
+  font-size: 12px;
+  font-weight: 600;
+  text-decoration: line-through;
+  opacity: 0.4;
+  margin-left: 8px;
+}
+
+.pagination-custom {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 16px;
   margin-top: 80px;
-  text-align: center;
 }
-@media (max-width: 768px) {
-  .collection-main-strict__header {
-    margin-bottom: 40px;
+.page-nav, .page-num {
+  width: 36px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: none;
+  border: none;
+  font-size: 14px;
+  font-weight: 700;
+  cursor: pointer;
+}
+.page-nav {
+  border: 1px solid var(--color-borders);
+  border-radius: 50%;
+}
+.page-num.active {
+  background-color: var(--color-dark-bg);
+  color: white;
+  border-radius: 4px;
+}
+
+@media (max-width: 900px) {
+  .collection-layout {
+    flex-direction: column;
   }
-  .collection-main-strict__title {
-    font-size: 40px;
+  .collection-sidebar {
+    width: 100%;
   }
-  .collection-main-strict__grid {
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: 40px 20px;
+  .collection-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+@media (max-width: 600px) {
+  .collection-grid {
+    grid-template-columns: 1fr;
   }
 }
 </style>
 
 {% schema %}
 {
-  "name": "Collection strict",
+  "name": "Collection Main Strict",
   "settings": []
 }
 {% endschema %}

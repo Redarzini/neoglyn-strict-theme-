@@ -2,9 +2,13 @@
   "sections": {
     "main": {
       "type": "product-main-strict"
+    },
+    "trust-badges": {
+      "type": "product-trust-badges-strict"
     }
   },
   "order": [
-    "main"
+    "main",
+    "trust-badges"
   ]
 }
