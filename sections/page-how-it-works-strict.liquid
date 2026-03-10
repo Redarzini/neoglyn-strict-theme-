@@ -1,0 +1,237 @@
+<div class="hiw-header text-center">
+  <div class="container">
+    <h1>How It Works</h1>
+    <p>Neoglyn utilizes non-invasive optical technology to trigger cellular regeneration.</p>
+  </div>
+</div>
+
+<div class="hiw-diagram-section container">
+  <div class="hiw-diagram-layout">
+    
+    <div class="hiw-diagram-info">
+      <div class="caption caption--mint">PATENTED TECH</div>
+      <h2>Dermal Penetration</h2>
+      <p>Our tri-wavelength LED array penetrates different layers of tissue simultaneously, addressing multiple skin concerns in a single session.</p>
+    </div>
+
+    <div class="dermal-diagram">
+      
+      <!-- Epidermis -->
+      <div class="diagram-layer layer-epidermis">
+        <div class="diagram-light light-blue">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="2" x2="12" y2="22"></line><line x1="12" y1="22" x2="8" y2="18"></line><line x1="12" y1="22" x2="16" y2="18"></line></svg>
+        </div>
+        <div class="layer-content">
+          <h4>EPIDERMIS</h4>
+          <p>Blue Light 415nm</p>
+          <span>Targets surface bacteria and active breakouts.</span>
+        </div>
+      </div>
+      
+      <!-- Dermis -->
+      <div class="diagram-layer layer-dermis">
+        <div class="diagram-light light-red">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="2" x2="12" y2="22"></line><line x1="12" y1="22" x2="8" y2="18"></line><line x1="12" y1="22" x2="16" y2="18"></line></svg>
+        </div>
+        <div class="layer-content">
+          <h4>DERMIS</h4>
+          <p>Red Light 630nm</p>
+          <span>Stimulates fibroblasts to produce collagen. Smoothes fine lines.</span>
+        </div>
+      </div>
+
+      <!-- Hypodermis -->
+      <div class="diagram-layer layer-hypodermis">
+        <div class="diagram-light light-nir">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="2" x2="12" y2="22"></line><line x1="12" y1="22" x2="8" y2="18"></line><line x1="12" y1="22" x2="16" y2="18"></line></svg>
+        </div>
+        <div class="layer-content">
+          <h4>HYPODERMIS</h4>
+          <p>Near-Infrared 830nm</p>
+          <span>Deep tissue healing, reduces inflammation and redness.</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<div class="hiw-protocol-section">
+  <div class="container text-center">
+    <h2>3-Step Protocol</h2>
+    <div class="protocol-grid">
+      
+      <div class="protocol-step">
+        <img class="protocol-img" src="https://via.placeholder.com/300x300/F5D0C5/001F3F?text=Cleanse" alt="Cleanse">
+        <div class="step-num">Step 1</div>
+        <h3>Cleanse & Apply Serum</h3>
+        <p>Start with a fresh face. Apply a generous layer of the Conductive Repair Serum to ensure optimal light penetration.</p>
+      </div>
+
+      <div class="protocol-step">
+        <img class="protocol-img" src="https://via.placeholder.com/300x300/FAFAFA/001F3F?text=Treat" alt="Treat">
+        <div class="step-num">Step 2</div>
+        <h3>Treat for 5 Minutes</h3>
+        <p>Glide the Neoglyn Lumina across your face in upward motions. The device will automatically pause after the cycle.</p>
+      </div>
+
+      <div class="protocol-step">
+        <img class="protocol-img" src="https://via.placeholder.com/300x300/EBEBEB/001F3F?text=Glow" alt="Glow">
+        <div class="step-num">Step 3</div>
+        <h3>Glow & Go</h3>
+        <p>Massage any remaining serum into the skin. Follow up with your favorite moisturizer or SPF.</p>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<style>
+.hiw-header {
+  padding: 80px 0 40px;
+}
+.hiw-header h1 {
+  font-size: 56px;
+  margin-bottom: 16px;
+}
+.hiw-header p {
+  font-size: 18px;
+  opacity: 0.8;
+}
+
+.hiw-diagram-section {
+  padding: 60px 0 100px;
+}
+.hiw-diagram-layout {
+  display: flex;
+  align-items: center;
+  gap: 80px;
+}
+.hiw-diagram-info {
+  flex: 1;
+}
+.hiw-diagram-info h2 {
+  font-size: 40px;
+  margin-bottom: 24px;
+}
+
+.dermal-diagram {
+  flex: 1.5;
+  background-color: #FAFAFA;
+  border-radius: 20px;
+  padding: 40px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+.diagram-layer {
+  display: flex;
+  align-items: flex-start;
+  padding: 24px;
+  background-color: white;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.02);
+  position: relative;
+  overflow: hidden;
+}
+/* Visual hints of layers */
+.diagram-layer::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 6px;
+}
+.layer-epidermis::before { background-color: #4A90E2; }
+.layer-dermis::before { background-color: #D0021B; }
+.layer-hypodermis::before { background-color: #F5A623; }
+
+.diagram-light {
+  width: 40px;
+  display: flex;
+  justify-content: center;
+  margin-right: 24px;
+}
+.light-blue { color: #4A90E2; }
+.light-red { color: #D0021B; }
+.light-nir { color: #F5A623; }
+
+.layer-content h4 {
+  font-size: 14px;
+  letter-spacing: 2px;
+  margin-bottom: 4px;
+  color: var(--color-text);
+}
+.layer-content p {
+  font-size: 16px;
+  font-weight: 700;
+  margin-bottom: 8px;
+}
+.layer-content span {
+  font-size: 13px;
+  opacity: 0.7;
+}
+
+.hiw-protocol-section {
+  background-color: var(--color-dark-bg);
+  color: white;
+  padding: 100px 0;
+}
+.hiw-protocol-section h2 {
+  color: white;
+  margin-bottom: 60px;
+  font-size: 36px;
+}
+.protocol-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 40px;
+}
+.protocol-step {
+  text-align: left;
+}
+.protocol-img {
+  width: 100%;
+  border-radius: 16px;
+  margin-bottom: 24px;
+  aspect-ratio: 1;
+  object-fit: cover;
+}
+.step-num {
+  font-size: 11px;
+  letter-spacing: 2px;
+  color: var(--color-primary-btn);
+  font-weight: 700;
+  margin-bottom: 12px;
+  text-transform: uppercase;
+}
+.protocol-step h3 {
+  color: white;
+  font-size: 20px;
+  margin-bottom: 16px;
+}
+.protocol-step p {
+  font-size: 14px;
+  opacity: 0.8;
+  line-height: 1.6;
+}
+
+@media (max-width: 900px) {
+  .hiw-diagram-layout {
+    flex-direction: column;
+  }
+  .protocol-grid {
+    grid-template-columns: 1fr;
+    max-width: 400px;
+    margin: 0 auto;
+  }
+}
+</style>
+
+{% schema %}
+{
+  "name": "How It Works Strict",
+  "settings": []
+}
+{% endschema %}
