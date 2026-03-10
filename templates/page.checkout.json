@@ -1,0 +1,10 @@
+{
+  "sections": {
+    "main": {
+      "type": "checkout-imitation-strict"
+    }
+  },
+  "order": [
+    "main"
+  ]
+}

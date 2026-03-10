@@ -1,0 +1,427 @@
+<div class="checkout-layout">
+  
+  <!-- Left Side: Forms -->
+  <div class="checkout-main">
+    <div class="checkout-header">
+      <div class="logo-text">NEOGLYN</div>
+      <nav class="checkout-breadcrumbs">
+        <span>Cart</span>
+        <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" width="12" height="12"><polyline points="9 18 15 12 9 6"></polyline></svg>
+        <span class="active">Information</span>
+        <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" width="12" height="12"><polyline points="9 18 15 12 9 6"></polyline></svg>
+        <span>Shipping</span>
+        <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" width="12" height="12"><polyline points="9 18 15 12 9 6"></polyline></svg>
+        <span>Payment</span>
+      </nav>
+    </div>
+
+    <section class="checkout-section">
+      <div class="section-header">
+        <h2>Contact information</h2>
+        <p>Already have an account? <a href="/account/login">Log in</a></p>
+      </div>
+      <div class="input-group">
+        <label for="checkout_email" class="visually-hidden">Email</label>
+        <input type="email" id="checkout_email" class="input-field" placeholder="Email">
+      </div>
+      <div class="checkbox-group">
+        <input type="checkbox" id="checkout_newsletter" checked>
+        <label for="checkout_newsletter">Email me with news and offers</label>
+      </div>
+    </section>
+
+    <section class="checkout-section">
+      <div class="section-header">
+        <h2>Shipping address</h2>
+      </div>
+      
+      <div class="input-group">
+        <select class="input-field">
+          <option>United States</option>
+          <option>Canada</option>
+          <option>United Kingdom</option>
+        </select>
+      </div>
+      
+      <div class="input-row">
+        <div class="input-group half">
+          <input type="text" class="input-field" placeholder="First name">
+        </div>
+        <div class="input-group half">
+          <input type="text" class="input-field" placeholder="Last name">
+        </div>
+      </div>
+      
+      <div class="input-group">
+        <input type="text" class="input-field" placeholder="Address">
+      </div>
+      
+      <div class="input-group">
+        <input type="text" class="input-field" placeholder="Apartment, suite, etc. (optional)">
+      </div>
+      
+      <div class="input-row multi">
+        <div class="input-group">
+          <input type="text" class="input-field" placeholder="City">
+        </div>
+        <div class="input-group">
+          <select class="input-field">
+            <option>State</option>
+            <option>California</option>
+            <option>New York</option>
+          </select>
+        </div>
+        <div class="input-group">
+          <input type="text" class="input-field" placeholder="ZIP code">
+        </div>
+      </div>
+      
+      <div class="input-group">
+        <input type="tel" class="input-field" placeholder="Phone">
+      </div>
+    </section>
+
+    <div class="checkout-footer">
+      <a href="/cart" class="return-link"><svg fill="none" viewBox="0 0 24 24" stroke="currentColor" width="12" height="12"><polyline points="15 18 9 12 15 6"></polyline></svg> Return to cart</a>
+      <button class="btn btn--dark checkout-btn">Continue to shipping</button>
+    </div>
+    
+    <div class="checkout-legal">
+      <a href="#">Refund policy</a>
+      <a href="#">Shipping policy</a>
+      <a href="#">Privacy policy</a>
+      <a href="#">Terms of service</a>
+    </div>
+  </div>
+
+  <!-- Right Side: Order Summary -->
+  <aside class="checkout-sidebar">
+    <div class="sidebar-inner">
+      <div class="order-item">
+        <div class="item-image">
+          <img src="https://via.placeholder.com/64x64/E0EBEB/001F3F?text=Pro" alt="Neoglyn Pro Advanced">
+          <span class="item-qty">1</span>
+        </div>
+        <div class="item-info">
+          <h3>Neoglyn Pro Advanced</h3>
+          <p>Midnight Blue Edition</p>
+        </div>
+        <div class="item-price">$249.00</div>
+      </div>
+      
+      <div class="discount-code">
+        <input type="text" class="input-field" placeholder="Discount code">
+        <button class="btn-apply disabled">Apply</button>
+      </div>
+      
+      <div class="totals-block">
+        <div class="totals-row">
+          <span>Subtotal</span>
+          <span class="price">$249.00</span>
+        </div>
+        <div class="totals-row">
+          <span>Shipping</span>
+          <span class="shipping-calc">Calculated at next step</span>
+        </div>
+      </div>
+      
+      <div class="totals-final">
+        <span>Total</span>
+        <span class="final-price"><span class="currency">USD</span> $249.00</span>
+      </div>
+    </div>
+  </aside>
+
+</div>
+
+<style>
+/* Reset some body styles for this specific layout to mimic Shopify Checkout */
+body.template-page-checkout {
+  background-color: white;
+}
+.checkout-layout {
+  display: flex;
+  min-height: 100vh;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+}
+
+/* Left Column */
+.checkout-main {
+  width: 55%;
+  padding: 50px 5% 50px 10%;
+}
+.checkout-header {
+  margin-bottom: 40px;
+}
+.logo-text {
+  font-size: 28px;
+  font-family: var(--font-heading);
+  color: var(--color-text);
+  margin-bottom: 20px;
+}
+.checkout-breadcrumbs {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 12px;
+  color: #737373;
+}
+.checkout-breadcrumbs svg {
+  opacity: 0.6;
+}
+.checkout-breadcrumbs .active {
+  color: #333333;
+  font-weight: 600;
+}
+.checkout-section {
+  margin-bottom: 40px;
+}
+.section-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  margin-bottom: 16px;
+}
+.section-header h2 {
+  font-size: 18px;
+  font-weight: 400;
+  margin: 0;
+  font-family: inherit;
+  color: #333;
+}
+.section-header p {
+  font-size: 14px;
+  color: #737373;
+  margin: 0;
+}
+.section-header a {
+  color: var(--color-text);
+  text-decoration: none;
+}
+.input-group {
+  margin-bottom: 12px;
+}
+.input-row {
+  display: flex;
+  gap: 12px;
+}
+.input-row .half {
+  flex: 1;
+}
+.input-row.multi > div:nth-child(1) { flex: 2.5; }
+.input-row.multi > div:nth-child(2) { flex: 1.5; }
+.input-row.multi > div:nth-child(3) { flex: 1.5; }
+
+.input-field {
+  width: 100%;
+  padding: 14px;
+  border: 1px solid #d9d9d9;
+  border-radius: 5px;
+  font-size: 14px;
+  color: #333;
+  transition: all 0.2s ease;
+  font-family: inherit;
+}
+.input-field:focus {
+  outline: none;
+  border-color: var(--color-text);
+  box-shadow: 0 0 0 1px var(--color-text);
+}
+select.input-field {
+  appearance: none;
+  background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23333' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 14px center;
+  background-size: 14px;
+}
+.checkbox-group {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  margin-top: 10px;
+}
+.checkbox-group input[type="checkbox"] {
+  width: 18px;
+  height: 18px;
+  border-radius: 4px;
+  border: 1px solid #d9d9d9;
+  margin-top: 2px;
+  accent-color: var(--color-text);
+}
+.checkbox-group label {
+  font-size: 14px;
+  color: #545454;
+  cursor: pointer;
+}
+
+.checkout-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 20px;
+  padding-top: 20px;
+}
+.return-link {
+  color: var(--color-text);
+  text-decoration: none;
+  font-size: 14px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.checkout-btn {
+  padding: 20px 24px;
+  font-size: 14px;
+  border-radius: 5px;
+}
+
+.checkout-legal {
+  margin-top: 60px;
+  border-top: 1px solid #e6e6e6;
+  padding-top: 16px;
+  display: flex;
+  gap: 20px;
+}
+.checkout-legal a {
+  color: var(--color-primary-btn);
+  text-decoration: none;
+  font-size: 12px;
+}
+
+/* Right Column */
+.checkout-sidebar {
+  width: 45%;
+  background-color: #FAFAFA;
+  border-left: 1px solid #e1e1e1;
+  padding: 50px 10% 50px 5%;
+}
+.sidebar-inner {
+  max-width: 400px;
+}
+.order-item {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 24px;
+}
+.item-image {
+  position: relative;
+  width: 64px;
+  height: 64px;
+  background: white;
+  border: 1px solid rgba(0,0,0,0.1);
+  border-radius: 8px;
+}
+.item-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  border-radius: 8px;
+}
+.item-qty {
+  position: absolute;
+  top: -8px;
+  right: -8px;
+  background: rgba(114,114,114,0.9);
+  color: white;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px;
+  font-weight: 500;
+}
+.item-info {
+  flex: 1;
+}
+.item-info h3 {
+  font-size: 14px;
+  font-weight: 600;
+  color: #333;
+  margin: 0 0 4px;
+  font-family: inherit;
+}
+.item-info p {
+  font-size: 12px;
+  color: #717171;
+  margin: 0;
+}
+.item-price {
+  font-size: 14px;
+  color: #333;
+  font-weight: 500;
+}
+.discount-code {
+  display: flex;
+  gap: 12px;
+  padding: 24px 0;
+  border-top: 1px solid rgba(0,0,0,0.1);
+  border-bottom: 1px solid rgba(0,0,0,0.1);
+  margin-bottom: 24px;
+}
+.btn-apply {
+  background: #C8C8C8;
+  color: white;
+  border: none;
+  padding: 0 24px;
+  border-radius: 5px;
+  font-weight: 600;
+  cursor: not-allowed;
+}
+.totals-block {
+  padding-bottom: 24px;
+  border-bottom: 1px solid rgba(0,0,0,0.1);
+  margin-bottom: 24px;
+}
+.totals-row {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 12px;
+  font-size: 14px;
+  color: #535353;
+}
+.shipping-calc {
+  font-size: 12px;
+}
+.price {
+  color: #333;
+  font-weight: 500;
+}
+.totals-final {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 16px;
+  color: #333;
+}
+.final-price {
+  font-size: 24px;
+  font-weight: 600;
+}
+.currency {
+  font-size: 12px;
+  color: #717171;
+  font-weight: 400;
+  margin-right: 8px;
+}
+
+@media (max-width: 1000px) {
+  .checkout-layout {
+    flex-direction: column-reverse; /* Usually Sidebar is on top on mobile */
+  }
+  .checkout-main, .checkout-sidebar {
+    width: 100%;
+    padding: 30px 20px;
+    border: none;
+  }
+}
+</style>
+
+{% schema %}
+{
+  "name": "Checkout Imitation",
+  "settings": []
+}
+{% endschema %}
