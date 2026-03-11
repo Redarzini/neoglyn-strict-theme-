@@ -18,7 +18,7 @@
     <section class="checkout-section">
       <div class="section-header">
         <h2>Contact information</h2>
-        <p>Already have an account? <a href="/account/login">Log in</a></p>
+        <p>Already have an account? <a href="{{ routes.account_login_url }}">Log in</a></p>
       </div>
       <div class="input-group">
         <label for="checkout_email" class="visually-hidden">Email</label>
@@ -82,7 +82,7 @@
     </section>
 
     <div class="checkout-footer">
-      <a href="/cart" class="return-link"><svg fill="none" viewBox="0 0 24 24" stroke="currentColor" width="12" height="12"><polyline points="15 18 9 12 15 6"></polyline></svg> Return to cart</a>
+      <a href="{{ routes.cart_url }}" class="return-link"><svg fill="none" viewBox="0 0 24 24" stroke="currentColor" width="12" height="12"><polyline points="15 18 9 12 15 6"></polyline></svg> Return to cart</a>
       <button class="btn btn--dark checkout-btn">Continue to shipping</button>
     </div>
     
@@ -99,7 +99,7 @@
     <div class="sidebar-inner">
       <div class="order-item">
         <div class="item-image">
-          <img src="https://images.unsplash.com/photo-1616683693504-3ea7e9ad6fec?q=80&w=64&auto=format&fit=crop" alt="Neoglyn Pro Advanced">
+          {{ 'product-1' | placeholder_svg_tag: 'placeholder-svg' }}
           <span class="item-qty">1</span>
         </div>
         <div class="item-info">

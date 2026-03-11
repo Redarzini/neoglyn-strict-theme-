@@ -24,7 +24,7 @@
               {% endif %}
             </div>
             
-            <form method="post" action="/cart/add" class="quick-add-form">
+            <form method="post" action="{{ routes.cart_add_url }}" class="quick-add-form">
               <input type="hidden" name="id" value="{{ product.variants.first.id }}">
               <button type="submit" class="btn quick-add-btn">
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
@@ -48,7 +48,7 @@
       {% for i in (1..section.settings.product_limit) %}
         <div class="product-card">
           <div class="product-card__image">
-            <img src="https://images.unsplash.com/photo-1615397323608-8e805d7b5b5c?q=80&w=400&auto=format&fit=crop" alt="Placeholder Product" width="400" height="400" loading="lazy">
+            {{ 'product-2' | placeholder_svg_tag: 'placeholder-svg placeholder-product-mock' }}
             <div class="product-badges">
               <span class="badge badge--award">AWARD WINNER</span>
             </div>
@@ -92,7 +92,7 @@
 
 {% schema %}
 {
-  "name": "Featured Collection Strict",
+  "name": "Featured Collection",
   "settings": [
     { "type": "text", "id": "caption", "label": "Caption", "default": "MEMBER FAVORITES" },
     { "type": "text", "id": "title", "label": "Title", "default": "The Routine" },
@@ -101,7 +101,7 @@
     { "type": "text", "id": "btn_text", "label": "Button Text", "default": "SHOP ALL" }
   ],
   "presets": [
-    { "name": "Featured Collection Strict" }
+    { "name": "Featured Collection" }
   ]
 }
 {% endschema %}

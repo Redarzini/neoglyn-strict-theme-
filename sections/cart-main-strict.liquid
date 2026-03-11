@@ -10,7 +10,9 @@
         {% for item in cart.items %}
           <div class="cart-item-strict">
             <div class="cart-item-strict__image">
-              <img src="{{ item.image | img_url: '300x' }}" alt="{{ item.title | escape }}">
+              {% if item.image %}
+                {{ item.image | image_url: width: 300 | image_tag: alt: item.title, loading: 'lazy' }}
+              {% endif %}
             </div>
             <div class="cart-item-strict__details">
               <h3><a href="{{ item.url }}">{{ item.product.title }}</a></h3>

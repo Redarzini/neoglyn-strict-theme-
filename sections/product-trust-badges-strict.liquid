@@ -1,34 +1,33 @@
 <div class="trust-badges-strict">
-  <div class="container trust-badges-inner">
-    
-    <div class="trust-badge">
-      <div class="trust-badge__icon">
-        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
-      </div>
-      <div class="trust-badge__title">FDA CLEARED</div>
+  <div class="container">
+    <div class="trust-badges-inner">
+      {% if section.blocks.size > 0 %}
+        {% for block in section.blocks %}
+          <div class="trust-badge fade-in-up" style="animation-delay: {{ forloop.index | times: 0.1 }}s;" {{ block.shopify_attributes }}>
+            <div class="trust-badge__icon-wrapper">
+              {% if block.settings.custom_svg != blank %}
+                <div class="trust-badge__icon">
+                  {{ block.settings.custom_svg }}
+                </div>
+              {% elsif block.settings.image != blank %}
+                {{ block.settings.image | image_url: width: 64 | image_tag: class: 'trust-badge__img', loading: 'lazy' }}
+              {% else %}
+                <div class="trust-badge__icon">
+                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><path d="M8 14s1.5 2 4 2 4-2 4-2"></path><line x1="9" y1="9" x2="9.01" y2="9"></line><line x1="15" y1="9" x2="15.01" y2="9"></line></svg>
+                </div>
+              {% endif %}
+            </div>
+            
+            {% if block.settings.title != blank %}
+              <div class="trust-badge__title">{{ block.settings.title }}</div>
+            {% endif %}
+          </div>
+        {% endfor %}
+      {% else %}
+        <!-- Default State for Theme Editor -->
+        <div class="trust-badge"><div class="trust-badge__title">ADD BADGES IN EDITOR</div></div>
+      {% endif %}
     </div>
-    
-    <div class="trust-badge">
-      <div class="trust-badge__icon">
-        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 21.73a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73z"></path><line x1="12" y1="22" x2="12" y2="12"></line><line x1="12" y1="12" x2="21.5" y2="6.5"></line><line x1="12" y1="12" x2="2.5" y2="6.5"></line></svg>
-      </div>
-      <div class="trust-badge__title">CRUELTY FREE</div>
-    </div>
-    
-    <div class="trust-badge">
-      <div class="trust-badge__icon">
-        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="3" width="15" height="13"></rect><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"></polygon><circle cx="5.5" cy="18.5" r="2.5"></circle><circle cx="18.5" cy="18.5" r="2.5"></circle></svg>
-      </div>
-      <div class="trust-badge__title">FREE SHIPPING</div>
-    </div>
-    
-    <div class="trust-badge">
-      <div class="trust-badge__icon">
-        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="7"></circle><polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88"></polyline></svg>
-      </div>
-      <div class="trust-badge__title">2 YEAR WARRANTY</div>
-    </div>
-    
   </div>
 </div>
 
@@ -36,38 +35,99 @@
 .trust-badges-strict {
   border-top: 1px solid var(--color-borders);
   border-bottom: 1px solid var(--color-borders);
-  padding: 60px 0;
-  margin-top: 60px;
+  padding: var(--spacing-2xl) 0;
+  margin-top: var(--spacing-lg);
+  background-color: var(--color-primary-bg);
 }
+
 .trust-badges-inner {
   display: flex;
   justify-content: space-between;
-  align-items: center;
+  align-items: flex-start;
   text-align: center;
+  gap: var(--spacing-md);
+  flex-wrap: wrap;
 }
+
 .trust-badge {
   flex: 1;
+  min-width: 140px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transition: transform 0.3s ease;
 }
+
+.trust-badge:hover {
+  transform: translateY(-5px);
+}
+
+.trust-badge__icon-wrapper {
+  margin-bottom: var(--spacing-md);
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  background: var(--color-secondary-bg);
+  box-shadow: inset 0 2px 4px rgba(0,0,0,0.02);
+  transition: all 0.3s ease;
+}
+
+.trust-badge:hover .trust-badge__icon-wrapper {
+  background: var(--color-primary-btn);
+  color: var(--color-primary-bg);
+  box-shadow: 0 10px 15px -3px rgba(130, 217, 185, 0.4);
+}
+
 .trust-badge__icon {
-  color: var(--color-primary-btn);
-  margin-bottom: 16px;
+  color: var(--color-text);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: color 0.3s ease;
 }
+
 .trust-badge__icon svg {
   width: 32px;
   height: 32px;
 }
+
+.trust-badge:hover .trust-badge__icon {
+  color: var(--color-primary-bg);
+}
+
+.trust-badge__img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  border-radius: 50%;
+  padding: 12px;
+}
+
 .trust-badge__title {
-  font-size: 12px;
+  font-size: 0.75rem;
+  font-family: var(--font-heading);
   font-weight: 800;
-  letter-spacing: 1.5px;
+  letter-spacing: 0.1em;
   color: var(--color-text);
   text-transform: uppercase;
+  max-width: 160px;
 }
+
 @media (max-width: 768px) {
   .trust-badges-inner {
     display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 40px;
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--spacing-xl) var(--spacing-md);
+  }
+}
+
+@media (max-width: 480px) {
+  .trust-badges-inner {
+    grid-template-columns: 1fr;
   }
 }
 </style>
@@ -75,10 +135,67 @@
 {% schema %}
 {
   "name": "Trust Badges Strict",
+  "max_blocks": 6,
   "settings": [],
+  "blocks": [
+    {
+      "type": "badge",
+      "name": "Badge",
+      "settings": [
+        {
+          "type": "html",
+          "id": "custom_svg",
+          "label": "Custom SVG Code",
+          "info": "Paste raw SVG code here for the highest quality icon."
+        },
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Fallback Icon Image",
+          "info": "Used if no SVG is provided."
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Badge Title",
+          "default": "FEATURE"
+        }
+      ]
+    }
+  ],
   "presets": [
     {
-      "name": "Trust Badges Strict"
+      "name": "Trust Badges Strict",
+      "blocks": [
+        {
+          "type": "badge",
+          "settings": {
+            "title": "FDA CLEARED",
+            "custom_svg": "<svg width=\"24\" height=\"24\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M22 11.08V12a10 10 0 1 1-5.93-9.14\"></path><polyline points=\"22 4 12 14.01 9 11.01\"></polyline></svg>"
+          }
+        },
+        {
+          "type": "badge",
+          "settings": {
+            "title": "CRUELTY FREE",
+            "custom_svg": "<svg width=\"24\" height=\"24\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M11 21.73a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73z\"></path><line x1=\"12\" y1=\"22\" x2=\"12\" y2=\"12\"></line><line x1=\"12\" y1=\"12\" x2=\"21.5\" y2=\"6.5\"></line><line x1=\"12\" y1=\"12\" x2=\"2.5\" y2=\"6.5\"></line></svg>"
+          }
+        },
+        {
+          "type": "badge",
+          "settings": {
+            "title": "FREE SHIPPING",
+            "custom_svg": "<svg width=\"24\" height=\"24\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><rect x=\"1\" y=\"3\" width=\"15\" height=\"13\"></rect><polygon points=\"16 8 20 8 23 11 23 16 16 16 16 8\"></polygon><circle cx=\"5.5\" cy=\"18.5\" r=\"2.5\"></circle><circle cx=\"18.5\" cy=\"18.5\" r=\"2.5\"></circle></svg>"
+          }
+        },
+        {
+          "type": "badge",
+          "settings": {
+            "title": "2 YEAR WARRANTY",
+            "custom_svg": "<svg width=\"24\" height=\"24\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><circle cx=\"12\" cy=\"8\" r=\"7\"></circle><polyline points=\"8.21 13.89 7 23 12 20 17 23 15.79 13.88\"></polyline></svg>"
+          }
+        }
+      ]
     }
   ]
 }

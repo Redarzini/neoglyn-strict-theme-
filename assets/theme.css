@@ -1,18 +1,48 @@
-/* Neoglyn Strict 1:1 Variables based on final Screenshots */
+/* Neoglyn Complete Overhaul - True 1:1 Premium Aesthetics */
 :root {
+  /* Core Color Palette from Screenshots */
   --color-primary-bg: #FFFFFF;
-  --color-text: #001F3F; /* Midnight Blue */
-  --color-borders: #E0E0E0; /* Lighter border for clean look */
-  --color-primary-btn: #82D9B9; /* Bright Mint */
-  --color-primary-btn-text: #001F3F;
-  --color-secondary-bg: #F8F9FA; /* Subtle gray background for sections */
-  --color-dark-bg: #001F3F; /* Dark background section */
-  --color-dark-text: #FFFFFF; /* Text on dark bg */
+  --color-secondary-bg: #F8F9FA;
+  --color-dark-bg: #081a2e; /* Neoglyn Navy */
+  --color-text: #4a5568;
+  --color-heading: #081a2e;
+  --color-text-muted: #718096;
+  --color-dark-text: #FFFFFF;
+  --color-dark-text-muted: #A0AEC0;
+  --color-primary-btn: #7cdcac; /* Neoglyn Mint Green */
+  --color-primary-btn-hover: #65c494;
+  --color-primary-btn-text: #081a2e;
+  --color-borders: #E2E8F0;
+  --color-error: #EF4444;
+  --color-success: #7cdcac;
+
+  /* Typography */
+  --font-body: 'Inter', -apple-system, BlinkMacSystemFont, Arial, sans-serif;
+  --font-heading: 'Inter', -apple-system, BlinkMacSystemFont, Arial, sans-serif;
   
-  --font-body: 'Helvetica Neue', Helvetica, Arial, sans-serif;
-  --font-heading: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  /* Layout & Spacing */
+  --spacing-xs: 4px;
+  --spacing-sm: 8px;
+  --spacing-md: 16px;
+  --spacing-lg: 24px;
+  --spacing-xl: 40px;
+  --spacing-2xl: 64px;
+  --spacing-3xl: 96px;
+  --container-max-width: 1280px;
+  --border-radius-sm: 8px;
+  --border-radius-md: 12px;
+  --border-radius-lg: 20px;
+  --border-radius-xl: 32px;
+  --border-radius-pill: 9999px;
+  
+  /* Shadows & Effects */
+  --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.02);
+  --shadow-md: 0 4px 12px rgba(8, 26, 46, 0.05);
+  --shadow-lg: 0 12px 24px rgba(8, 26, 46, 0.08);
+  --transition-smooth: all 0.3s ease;
 }
 
+/* Base Resets & Typography */
 body {
   background-color: var(--color-primary-bg);
   color: var(--color-text);
@@ -20,80 +50,153 @@ body {
   margin: 0;
   padding: 0;
   -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
   line-height: 1.6;
+  overflow-x: hidden;
 }
 
-* {
+*, *::before, *::after {
   box-sizing: border-box;
 }
 
 h1, h2, h3, h4, h5, h6 {
-  color: var(--color-text);
+  color: var(--color-heading);
   font-family: var(--font-heading);
   margin-top: 0;
+  margin-bottom: var(--spacing-md);
   font-weight: 800;
-  letter-spacing: -0.5px;
+  line-height: 1.15;
+  letter-spacing: -0.02em;
 }
 
-/* Base Button Style from Screenshot */
+p {
+  color: var(--color-text);
+  margin-bottom: var(--spacing-lg);
+  font-size: 1rem;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+  transition: var(--transition-smooth);
+}
+
+/* Layout Utilities */
+.container {
+  width: 100%;
+  max-width: var(--container-max-width);
+  margin: 0 auto;
+  padding: 0 var(--spacing-lg);
+}
+
+.section-padding {
+  padding: var(--spacing-3xl) 0;
+}
+
+/* Utilities */
+.glass-panel {
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  border-radius: var(--border-radius-xl);
+  box-shadow: var(--shadow-md);
+}
+
+/* Button Component */
 .btn {
   background-color: var(--color-primary-btn);
   color: var(--color-primary-btn-text);
   border: none;
   padding: 14px 28px;
   cursor: pointer;
+  font-family: var(--font-heading);
   font-weight: 700;
+  font-size: 0.9rem;
   text-decoration: none;
-  display: inline-block;
-  text-align: center;
-  border-radius: 50px; /* Pill-shaped buttons seen in the screenshot */
-  transition: opacity 0.2s ease, transform 0.2s ease;
-  font-size: 14px;
-  text-transform: uppercase;
-  letter-spacing: 1px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--border-radius-sm);
+  transition: var(--transition-smooth);
+  white-space: nowrap;
 }
 
 .btn:hover {
-  opacity: 0.9;
-  transform: translateY(-2px);
+  background-color: var(--color-primary-btn-hover);
+  transform: translateY(-1px);
 }
 
 .btn--outline {
   background-color: transparent;
-  border: 1px solid var(--color-text);
-  color: var(--color-text);
+  border: 1px solid var(--color-heading);
+  color: var(--color-heading);
+}
+
+.btn--outline:hover {
+  background-color: var(--color-secondary-bg);
+  transform: translateY(-1px);
 }
 
 .btn--dark {
   background-color: var(--color-dark-bg);
+  border: none;
   color: var(--color-dark-text);
 }
 
-.container {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 0 40px;
+.btn--dark:hover {
+  background-color: #0c2642;
+  transform: translateY(-1px);
 }
 
 /* Typography Utilities */
 .text-center { text-align: center; }
+.text-dark { color: var(--color-dark-text); }
+
 .caption {
-  font-size: 11px;
+  font-family: var(--font-heading);
+  font-size: 0.75rem;
   text-transform: uppercase;
-  letter-spacing: 2px;
+  letter-spacing: 0.1em;
   font-weight: 700;
-  color: var(--color-primary-btn); /* Mint accents often used for small captions */
-  margin-bottom: 16px;
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
+  color: var(--color-primary-btn);
+  margin-bottom: var(--spacing-sm);
+  display: block;
 }
-.caption--dark {
-  color: var(--color-text);
+
+/* Animations */
+.fade-in-up {
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeInUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes fadeInUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Media Queries */
+@media (max-width: 1024px) {
+  :root {
+    --spacing-3xl: 64px;
+    --spacing-2xl: 48px;
+    --spacing-xl: 32px;
+  }
 }
 
 @media (max-width: 768px) {
-  .container {
-    padding: 0 20px;
+  :root {
+    --spacing-lg: 16px;
   }
+  
+  .container {
+    padding: 0 var(--spacing-lg);
+  }
+  
+  h1 { font-size: 2.25rem; }
+  h2 { font-size: 1.75rem; }
+  h3 { font-size: 1.25rem; }
 }

@@ -1,341 +1,160 @@
-<div class="order-confirm-strict container">
+<div class="order-confirm-page container section-padding text-center">
+  <h1 class="confirm-title fade-in-up">Thank You!</h1>
   
-  <div class="confirm-header">
-    <div class="success-icon">
-      <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg>
-    </div>
-    <div class="confirm-titles">
-      <div class="caption caption--mint">ORDER #NG-882910</div>
-      <h1>Thank you, Alex!</h1>
-      <p>We've accepted your order, and we're getting it ready. A confirmation email has been sent to <strong>alex@example.com</strong>.</p>
-    </div>
-  </div>
-
-  <div class="confirm-layout">
+  <div class="confirm-card glass-panel fade-in-up" style="animation-delay: 100ms;">
     
-    <!-- Left Column: Status & Customer Info -->
-    <div class="confirm-main">
-      
-      <div class="status-tracker-box">
-        <h3>Order Status</h3>
-        <div class="status-progress-bar">
-          <div class="progress-line">
-            <div class="progress-fill" style="width: 25%"></div>
-          </div>
-          <div class="progress-steps">
-            <div class="step active">
-              <div class="step-dot"></div>
-              <span>Confirmed</span>
-            </div>
-            <div class="step">
-              <div class="step-dot"></div>
-              <span>Preparing</span>
-            </div>
-            <div class="step">
-              <div class="step-dot"></div>
-              <span>On its way</span>
-            </div>
-            <div class="step">
-              <div class="step-dot"></div>
-              <span>Delivered</span>
-            </div>
-          </div>
-        </div>
+    <div class="confirm-icon-wrapper">
+      <div class="confirm-icon">
+        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
       </div>
-
-      <div class="customer-info-box">
-        <h3>Customer Information</h3>
-        <div class="info-grid">
-          
-          <div class="info-col">
-            <h4>Contact information</h4>
-            <p>alex@example.com<br>+1 (555) 123-4567</p>
-            
-            <h4>Shipping address</h4>
-            <p>Alex Johnson<br>100 Innovation Way<br>Suite 400<br>San Francisco, CA 94107<br>United States</p>
-          </div>
-          
-          <div class="info-col">
-            <h4>Payment method</h4>
-            <p><svg width="32" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="5" width="20" height="14" rx="2" ry="2"></rect><line x1="2" y1="10" x2="22" y2="10"></line></svg> ending in 4242 - $249.00</p>
-            
-            <h4>Billing address</h4>
-            <p>Same as shipping address</p>
-            
-            <h4>Shipping method</h4>
-            <p>Standard Free Shipping (3-5 Business Days)</p>
-          </div>
-          
-        </div>
-      </div>
-      
-      <div class="confirm-actions">
-        <a href="/collections/all" class="btn btn--dark">Continue Shopping</a>
-        <a href="#" class="btn btn--outline">Download Receipt</a>
-      </div>
-
     </div>
-
-    <!-- Right Column: Order Summary -->
-    <aside class="confirm-sidebar">
-      <div class="summary-box">
-        <h2>Order Summary</h2>
-        
-        <div class="summary-items">
-          <div class="order-item">
-            <div class="item-image">
-              <img src="https://images.unsplash.com/photo-1616683693504-3ea7e9ad6fec?q=80&w=64&auto=format&fit=crop" alt="Neoglyn Pro Advanced">
-              <span class="item-qty">1</span>
-            </div>
-            <div class="item-info">
-              <h3>Neoglyn Pro Advanced</h3>
-              <p>Midnight Blue Edition</p>
-            </div>
-            <div class="item-price">$249.00</div>
-          </div>
-        </div>
-        
-        <div class="totals-block">
-          <div class="totals-row">
-            <span>Subtotal</span>
-            <span>$249.00</span>
-          </div>
-          <div class="totals-row">
-            <span>Shipping</span>
-            <span>Free</span>
-          </div>
-          <div class="totals-row">
-            <span>Taxes</span>
-            <span>$0.00</span>
-          </div>
-        </div>
-        
-        <div class="totals-final">
-          <span>Total</span>
-          <span class="final-price"><span class="currency">USD</span> $249.00</span>
-        </div>
+    
+    <h2 class="confirm-heading">Your Order is Confirmed</h2>
+    <p class="confirm-subtitle">We've received your order and are currently processing it.</p>
+    
+    <div class="order-details-box">
+      <div class="detail-item">
+        <span class="detail-label">Order #</span>
+        <span class="detail-value">NG-882910</span>
       </div>
-    </aside>
-
+      <div class="detail-item">
+        <span class="detail-label">Date</span>
+        <span class="detail-value">{{ 'now' | date: "%B %d, %Y" }}</span>
+      </div>
+      <div class="detail-item">
+        <span class="detail-label">Total</span>
+        <span class="detail-value">$249.00</span>
+      </div>
+    </div>
+    
+    <p class="confirm-note">You will receive an email confirmation containing your receipt and tracking information once your order has shipped.</p>
+    
+    <a href="{{ routes.collections_url }}" class="btn confirm-btn">Continue Shopping</a>
+    
   </div>
-
 </div>
 
 <style>
-.order-confirm-strict {
-  padding: 60px 0 100px;
-}
-.confirm-header {
+.order-confirm-page {
   display: flex;
-  align-items: flex-start;
-  gap: 24px;
-  margin-bottom: 60px;
-  max-width: 800px;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 80vh;
+  background-color: var(--color-primary-bg);
 }
-.success-icon {
-  width: 64px;
-  height: 64px;
+
+.confirm-title {
+  font-size: 3.5rem;
+  font-weight: 800;
+  color: var(--color-heading);
+  margin-bottom: var(--spacing-xl);
+  letter-spacing: -0.02em;
+}
+
+.confirm-card {
+  max-width: 540px;
+  width: 100%;
+  padding: 60px;
+  border-radius: var(--border-radius-xl);
+  background: var(--color-primary-bg);
+  border: 1px solid var(--color-borders);
+  box-shadow: var(--shadow-sm);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.confirm-icon-wrapper {
+  margin-bottom: var(--spacing-lg);
+}
+
+.confirm-icon {
+  width: 80px;
+  height: 80px;
   border-radius: 50%;
-  border: 2px solid var(--color-primary-btn);
+  background-color: var(--color-secondary-bg);
   display: flex;
   align-items: center;
   justify-content: center;
   color: var(--color-primary-btn);
-  flex-shrink: 0;
-}
-.confirm-titles h1 {
-  font-size: 36px;
-  margin: 8px 0 16px;
-  letter-spacing: -1px;
-}
-.confirm-titles p {
-  font-size: 16px;
-  opacity: 0.8;
-  line-height: 1.6;
 }
 
-.confirm-layout {
-  display: flex;
-  gap: 60px;
-  align-items: flex-start;
-}
-.confirm-main {
-  flex: 1.2;
-}
-.status-tracker-box, .customer-info-box {
-  border: 1px solid var(--color-borders);
-  border-radius: 12px;
-  padding: 40px;
-  margin-bottom: 40px;
-}
-.status-tracker-box h3, .customer-info-box h3 {
-  font-size: 20px;
-  margin-bottom: 30px;
+.confirm-icon svg {
+  width: 40px;
+  height: 40px;
 }
 
-/* Timeline specific styling */
-.status-progress-bar {
-  position: relative;
-  padding-top: 10px;
+.confirm-heading {
+  font-size: 1.75rem;
+  font-weight: 800;
+  color: var(--color-heading);
+  margin-bottom: var(--spacing-sm);
 }
-.progress-line {
-  position: absolute;
-  top: 14px;
-  left: 10%;
-  right: 10%;
-  height: 2px;
-  background-color: var(--color-borders);
-  z-index: 1;
+
+.confirm-subtitle {
+  font-size: 1rem;
+  color: var(--color-text-muted);
+  margin-bottom: var(--spacing-xl);
 }
-.progress-fill {
-  height: 100%;
-  background-color: var(--color-primary-btn);
-}
-.progress-steps {
+
+.order-details-box {
+  width: 100%;
+  background-color: var(--color-secondary-bg);
+  border-radius: var(--border-radius-md);
+  padding: 24px;
   display: flex;
   justify-content: space-between;
-  position: relative;
-  z-index: 2;
+  text-align: left;
+  margin-bottom: var(--spacing-xl);
 }
-.step {
+
+.detail-item {
   display: flex;
   flex-direction: column;
-  align-items: center;
-  gap: 12px;
-  text-align: center;
-  width: 80px;
+  gap: 4px;
 }
-.step-dot {
-  width: 10px;
-  height: 10px;
-  background-color: white;
-  border: 2px solid var(--color-borders);
-  border-radius: 50%;
-}
-.step.active .step-dot {
-  background-color: var(--color-primary-btn);
-  border-color: var(--color-primary-btn);
-  box-shadow: 0 0 0 4px rgba(130,217,185,0.2);
-}
-.step span {
-  font-size: 11px;
+
+.detail-label {
+  font-family: var(--font-heading);
+  font-size: 0.75rem;
   font-weight: 700;
+  color: var(--color-text-muted);
   text-transform: uppercase;
-  letter-spacing: 1px;
-  color: var(--color-text);
-  opacity: 0.5;
-}
-.step.active span {
-  opacity: 1;
-  color: var(--color-primary-btn);
+  letter-spacing: 0.05em;
 }
 
-.info-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 40px;
-}
-.info-col h4 {
-  font-size: 10px;
-  text-transform: uppercase;
-  letter-spacing: 1.5px;
-  opacity: 0.6;
-  margin-bottom: 8px;
-  color: var(--color-text);
-}
-.info-col p {
-  font-size: 14px;
-  line-height: 1.6;
-  margin-bottom: 24px;
-}
-.info-col p svg {
-  vertical-align: middle;
-  margin-right: 8px;
-  opacity: 0.7;
-}
-.confirm-actions {
-  display: flex;
-  gap: 16px;
-}
-
-/* Sidebar styling similar to checkout but matching confirm frame */
-.confirm-sidebar {
-  flex: 0.8;
-}
-.summary-box {
-  background-color: var(--color-secondary-bg);
-  padding: 40px;
-  border-radius: 12px;
-}
-.summary-box h2 {
-  font-size: 20px;
-  margin-bottom: 30px;
-  padding-bottom: 20px;
-  border-bottom: 1px solid var(--color-borders);
-}
-.summary-items {
-  margin-bottom: 30px;
-}
-.order-item {
-  display: flex;
-  align-items: center;
-  gap: 16px;
-}
-.item-image {
-  position: relative;
-  width: 64px;
-  height: 64px;
-  background: white;
-  border: 1px solid rgba(0,0,0,0.1);
-  border-radius: 8px;
-}
-.item-image img { width: 100%; height: 100%; object-fit: contain; }
-.item-qty {
-  position: absolute;
-  top: -8px; right: -8px;
-  background: rgba(114,114,114,0.9);
-  color: white;
-  width: 20px; height: 20px;
-  border-radius: 50%;
-  display: flex; align-items: center; justify-content: center;
-  font-size: 12px; font-weight: 500;
-}
-.item-info { flex: 1; }
-.item-info h3 { font-size: 14px; font-weight: 600; margin: 0 0 4px; }
-.item-info p { font-size: 12px; color: #717171; margin: 0; }
-.item-price { font-size: 14px; font-weight: 500; }
-
-.totals-block {
-  padding-bottom: 24px;
-  border-bottom: 1px solid rgba(0,0,0,0.1);
-  margin-bottom: 24px;
-}
-.totals-row {
-  display: flex;
-  justify-content: space-between;
-  margin-bottom: 12px;
-  font-size: 14px;
-  color: #535353;
-}
-.totals-final {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  font-size: 16px;
-  color: #333;
-}
-.final-price {
-  font-size: 24px;
+.detail-value {
+  font-size: 1rem;
   font-weight: 600;
+  color: var(--color-heading);
 }
-.currency { font-size: 12px; color: #717171; font-weight: 400; margin-right: 8px; }
 
-@media (max-width: 900px) {
-  .confirm-layout {
-    flex-direction: column-reverse; /* Usually Sidebar is on top on mobile */
+.confirm-note {
+  font-size: 0.9rem;
+  color: var(--color-text-muted);
+  line-height: 1.6;
+  margin-bottom: var(--spacing-xl);
+  opacity: 0.8;
+}
+
+.confirm-btn {
+  width: 100%;
+  padding: 16px;
+  font-size: 1rem;
+  font-weight: 700;
+}
+
+@media (max-width: 600px) {
+  .confirm-title {
+    font-size: 2.5rem;
   }
-  .info-grid {
-    grid-template-columns: 1fr;
+  .confirm-card {
+    padding: 32px 20px;
+  }
+  .order-details-box {
+    flex-direction: column;
+    gap: 16px;
   }
 }
 </style>

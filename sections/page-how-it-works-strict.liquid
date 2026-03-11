@@ -1,237 +1,270 @@
-<div class="hiw-header text-center">
-  <div class="container">
-    <h1>How It Works</h1>
-    <p>Neoglyn utilizes non-invasive optical technology to trigger cellular regeneration.</p>
+<div class="science-radiance-section section-padding">
+  <div class="container text-center fade-in-up">
+    <h1 class="science-title">{{ section.settings.title | default: 'The Science of Radiance' }}</h1>
+    <p class="science-subtitle">{{ section.settings.subtitle | default: 'Experience the synergy of clinical-grade LED light therapy combined with our proprietary serums for unmatched results.' }}</p>
   </div>
-</div>
 
-<div class="hiw-diagram-section container">
-  <div class="hiw-diagram-layout">
-    
-    <div class="hiw-diagram-info">
-      <div class="caption caption--mint">PATENTED TECH</div>
-      <h2>Dermal Penetration</h2>
-      <p>Our tri-wavelength LED array penetrates different layers of tissue simultaneously, addressing multiple skin concerns in a single session.</p>
-    </div>
-
-    <div class="dermal-diagram">
-      
-      <!-- Epidermis -->
-      <div class="diagram-layer layer-epidermis">
-        <div class="diagram-light light-blue">
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="2" x2="12" y2="22"></line><line x1="12" y1="22" x2="8" y2="18"></line><line x1="12" y1="22" x2="16" y2="18"></line></svg>
+  <div class="container science-features">
+    {% for block in section.blocks %}
+      <div class="science-feature fade-in-up {% cycle 'row', 'row-reverse' %}" {{ block.shopify_attributes }} style="animation-delay: {{ forloop.index | times: 100 }}ms;">
+        
+        <div class="science-feature__content">
+          <div class="feature-number">0{{ forloop.index }}.</div>
+          <h2 class="feature-heading">{{ block.settings.title }}</h2>
+          <div class="feature-text">{{ block.settings.text }}</div>
+          {% if block.settings.button_link != blank %}
+            <a href="{{ block.settings.button_link }}" class="feature-link">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
+              {{ block.settings.button_text }}
+            </a>
+          {% endif %}
         </div>
-        <div class="layer-content">
-          <h4>EPIDERMIS</h4>
-          <p>Blue Light 415nm</p>
-          <span>Targets surface bacteria and active breakouts.</span>
+        
+        <div class="science-feature__image">
+          {% if block.settings.image != blank %}
+            <div class="image-wrapper">
+              {{ block.settings.image | image_url: width: 800 | image_tag: loading: 'lazy', alt: block.settings.title, class: 'radiance-img' }}
+            </div>
+          {% else %}
+            <div class="image-wrapper placeholder-wrapper">
+              {{ 'image' | placeholder_svg_tag: 'placeholder-svg' }}
+            </div>
+          {% endif %}
+        </div>
+
+      </div>
+    {% else %}
+      <!-- Placeholder content matching screenshot -->
+      <div class="science-feature fade-in-up">
+        <div class="science-feature__content">
+          <div class="feature-number">01.</div>
+          <h2 class="feature-heading">Targeted LED Therapy</h2>
+          <div class="feature-text">
+            <p>Our tri-wave technology utilizes deep penetrating light at optimal bandwidths to target cells beneath the skin's surface. Blue light eliminates acne-causing bacteria, while red and near-infrared light stimulate collagen production and reduce inflammation.</p>
+          </div>
+          <a href="#" class="feature-link">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
+            Explore Clinical Studies
+          </a>
+        </div>
+        <div class="science-feature__image">
+          <div class="image-wrapper">
+            {{ 'image' | placeholder_svg_tag: 'placeholder-svg radiance-img' }}
+          </div>
         </div>
       </div>
-      
-      <!-- Dermis -->
-      <div class="diagram-layer layer-dermis">
-        <div class="diagram-light light-red">
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="2" x2="12" y2="22"></line><line x1="12" y1="22" x2="8" y2="18"></line><line x1="12" y1="22" x2="16" y2="18"></line></svg>
-        </div>
-        <div class="layer-content">
-          <h4>DERMIS</h4>
-          <p>Red Light 630nm</p>
-          <span>Stimulates fibroblasts to produce collagen. Smoothes fine lines.</span>
-        </div>
-      </div>
-
-      <!-- Hypodermis -->
-      <div class="diagram-layer layer-hypodermis">
-        <div class="diagram-light light-nir">
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="2" x2="12" y2="22"></line><line x1="12" y1="22" x2="8" y2="18"></line><line x1="12" y1="22" x2="16" y2="18"></line></svg>
-        </div>
-        <div class="layer-content">
-          <h4>HYPODERMIS</h4>
-          <p>Near-Infrared 830nm</p>
-          <span>Deep tissue healing, reduces inflammation and redness.</span>
-        </div>
-      </div>
-
-    </div>
-  </div>
-</div>
-
-<div class="hiw-protocol-section">
-  <div class="container text-center">
-    <h2>3-Step Protocol</h2>
-    <div class="protocol-grid">
-      
-      <div class="protocol-step">
-        <img class="protocol-img" src="https://images.unsplash.com/photo-1556228578-0d85b1a4d571?q=80&w=300&auto=format&fit=crop" alt="Cleanse">
-        <div class="step-num">Step 1</div>
-        <h3>Cleanse & Apply Serum</h3>
-        <p>Start with a fresh face. Apply a generous layer of the Conductive Repair Serum to ensure optimal light penetration.</p>
-      </div>
-
-      <div class="protocol-step">
-        <img class="protocol-img" src="https://images.unsplash.com/photo-1616683693504-3ea7e9ad6fec?q=80&w=300&auto=format&fit=crop" alt="Treat">
-        <div class="step-num">Step 2</div>
-        <h3>Treat for 5 Minutes</h3>
-        <p>Glide the Neoglyn Lumina across your face in upward motions. The device will automatically pause after the cycle.</p>
-      </div>
-
-      <div class="protocol-step">
-        <img class="protocol-img" src="https://images.unsplash.com/photo-1615397323608-8e805d7b5b5c?q=80&w=300&auto=format&fit=crop" alt="Glow">
-        <div class="step-num">Step 3</div>
-        <h3>Glow & Go</h3>
-        <p>Massage any remaining serum into the skin. Follow up with your favorite moisturizer or SPF.</p>
-      </div>
-
-    </div>
+    {% endfor %}
   </div>
 </div>
 
 <style>
-.hiw-header {
-  padding: 80px 0 40px;
-}
-.hiw-header h1 {
-  font-size: 56px;
-  margin-bottom: 16px;
-}
-.hiw-header p {
-  font-size: 18px;
-  opacity: 0.8;
+.science-radiance-section {
+  background-color: var(--color-primary-bg);
+  overflow: hidden;
 }
 
-.hiw-diagram-section {
-  padding: 60px 0 100px;
+.science-title {
+  font-size: 3rem;
+  margin-bottom: var(--spacing-sm);
+  color: var(--color-heading);
+  letter-spacing: -0.02em;
 }
-.hiw-diagram-layout {
+
+.science-subtitle {
+  font-size: 1.125rem;
+  color: var(--color-text-muted);
+  max-width: 600px;
+  margin: 0 auto var(--spacing-3xl);
+  line-height: 1.6;
+}
+
+.science-features {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-3xl);
+}
+
+.science-feature {
   display: flex;
   align-items: center;
   gap: 80px;
 }
-.hiw-diagram-info {
+
+.science-feature.row-reverse {
+  flex-direction: row-reverse;
+}
+
+.science-feature__content {
+  flex: 1;
+  max-width: 480px;
+  padding-left: 20px; /* Slight offset for layout aesthetics */
+}
+
+.feature-number {
+  font-family: var(--font-heading);
+  font-size: 3.5rem;
+  font-weight: 800;
+  color: var(--color-borders);
+  line-height: 1;
+  margin-bottom: var(--spacing-sm);
+  letter-spacing: -0.05em;
+}
+
+.feature-heading {
+  font-size: 2rem;
+  margin-bottom: var(--spacing-md);
+  color: var(--color-heading);
+}
+
+.feature-text {
+  font-size: 1rem;
+  color: var(--color-text);
+  line-height: 1.6;
+  margin-bottom: var(--spacing-xl);
+}
+
+.feature-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  font-family: var(--font-heading);
+  font-weight: 700;
+  font-size: 0.875rem;
+  color: var(--color-heading);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  text-decoration: none;
+  border-bottom: 2px solid transparent;
+  padding-bottom: 4px;
+  transition: var(--transition-smooth);
+}
+
+.feature-link svg {
+  color: var(--color-primary-btn);
+}
+
+.feature-link:hover {
+  color: var(--color-primary-btn);
+  border-bottom-color: var(--color-primary-btn);
+}
+
+.science-feature__image {
   flex: 1;
 }
-.hiw-diagram-info h2 {
-  font-size: 40px;
-  margin-bottom: 24px;
-}
 
-.dermal-diagram {
-  flex: 1.5;
-  background-color: #FAFAFA;
-  border-radius: 20px;
+.image-wrapper {
+  position: relative;
+  background-color: var(--color-secondary-bg);
+  border-radius: var(--border-radius-xl);
   padding: 40px;
   display: flex;
-  flex-direction: column;
-  gap: 16px;
-}
-.diagram-layer {
-  display: flex;
-  align-items: flex-start;
-  padding: 24px;
-  background-color: white;
-  border-radius: 12px;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.02);
-  position: relative;
-  overflow: hidden;
-}
-/* Visual hints of layers */
-.diagram-layer::before {
-  content: '';
-  position: absolute;
-  left: 0;
-  top: 0;
-  bottom: 0;
-  width: 6px;
-}
-.layer-epidermis::before { background-color: #4A90E2; }
-.layer-dermis::before { background-color: #D0021B; }
-.layer-hypodermis::before { background-color: #F5A623; }
-
-.diagram-light {
-  width: 40px;
-  display: flex;
   justify-content: center;
-  margin-right: 24px;
-}
-.light-blue { color: #4A90E2; }
-.light-red { color: #D0021B; }
-.light-nir { color: #F5A623; }
-
-.layer-content h4 {
-  font-size: 14px;
-  letter-spacing: 2px;
-  margin-bottom: 4px;
-  color: var(--color-text);
-}
-.layer-content p {
-  font-size: 16px;
-  font-weight: 700;
-  margin-bottom: 8px;
-}
-.layer-content span {
-  font-size: 13px;
-  opacity: 0.7;
+  align-items: center;
 }
 
-.hiw-protocol-section {
-  background-color: var(--color-dark-bg);
-  color: white;
-  padding: 100px 0;
-}
-.hiw-protocol-section h2 {
-  color: white;
-  margin-bottom: 60px;
-  font-size: 36px;
-}
-.protocol-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 40px;
-}
-.protocol-step {
-  text-align: left;
-}
-.protocol-img {
+.radiance-img {
   width: 100%;
-  border-radius: 16px;
-  margin-bottom: 24px;
-  aspect-ratio: 1;
+  height: auto;
+  border-radius: var(--border-radius-lg);
+  box-shadow: var(--shadow-lg);
   object-fit: cover;
+  aspect-ratio: 4/5;
 }
-.step-num {
-  font-size: 11px;
-  letter-spacing: 2px;
-  color: var(--color-primary-btn);
-  font-weight: 700;
-  margin-bottom: 12px;
-  text-transform: uppercase;
+
+.placeholder-wrapper {
+  aspect-ratio: 4/5;
 }
-.protocol-step h3 {
-  color: white;
-  font-size: 20px;
-  margin-bottom: 16px;
-}
-.protocol-step p {
-  font-size: 14px;
-  opacity: 0.8;
-  line-height: 1.6;
+
+.placeholder-svg {
+  width: 100%;
+  height: 100%;
+  fill: #ccc;
 }
 
 @media (max-width: 900px) {
-  .hiw-diagram-layout {
-    flex-direction: column;
+  .science-title {
+    font-size: 2.25rem;
   }
-  .protocol-grid {
-    grid-template-columns: 1fr;
-    max-width: 400px;
-    margin: 0 auto;
+  .science-feature, 
+  .science-feature.row-reverse {
+    flex-direction: column;
+    gap: 40px;
+  }
+  .science-feature__content {
+    max-width: 100%;
+    padding-left: 0;
+  }
+  .image-wrapper {
+    padding: 20px;
   }
 }
 </style>
 
 {% schema %}
 {
-  "name": "How It Works Strict",
-  "settings": []
+  "name": "Science of Radiance",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Heading",
+      "default": "The Science of Radiance"
+    },
+    {
+      "type": "textarea",
+      "id": "subtitle",
+      "label": "Text",
+      "default": "Experience the synergy of clinical-grade LED light therapy combined with our proprietary serums for unmatched results."
+    }
+  ],
+  "blocks": [
+    {
+      "type": "feature",
+      "name": "Feature",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Image"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Heading",
+          "default": "Targeted LED Therapy"
+        },
+        {
+          "type": "richtext",
+          "id": "text",
+          "label": "Text",
+          "default": "<p>Our tri-wave technology utilizes deep penetrating light at optimal bandwidths to target cells beneath the skin's surface.</p>"
+        },
+        {
+          "type": "text",
+          "id": "button_text",
+          "label": "Button Label",
+          "default": "Explore Clinical Studies"
+        },
+        {
+          "type": "url",
+          "id": "button_link",
+          "label": "Button Link"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Science of Radiance",
+      "blocks": [
+        {
+          "type": "feature"
+        },
+        {
+          "type": "feature"
+        }
+      ]
+    }
+  ]
 }
 {% endschema %}
