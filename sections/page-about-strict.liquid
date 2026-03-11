@@ -1,35 +1,50 @@
 <div class="about-hero-strict">
   <div class="container about-hero-inner">
     <div class="about-hero__content">
-      <div class="caption caption--mint">OUR MISSION</div>
-      <h1>The Science of Radiance</h1>
-      <p>Redefining skincare through advanced molecular research and clinical-grade engineering. Neoglyn was founded with a singular purpose: to democratize access to dermatologist-level technology without compromising on aesthetic elegance.</p>
+      <div class="caption caption--mint">{{ section.settings.hero_caption | default: 'OUR MISSION' }}</div>
+      <h1>{{ section.settings.hero_title | default: 'The Science of Radiance' }}</h1>
+      <p>{{ section.settings.hero_text | default: 'Redefining skincare through advanced molecular research and clinical-grade engineering. Neoglyn was founded with a singular purpose: to democratize access to dermatologist-level technology without compromising on aesthetic elegance.' }}</p>
     </div>
     <div class="about-hero__image">
-      {{ 'image' | placeholder_svg_tag: 'placeholder-svg' }}
+      {% if section.settings.hero_image %}
+        {{ section.settings.hero_image | image_url: width: 800 | image_tag: loading: 'lazy', alt: section.settings.hero_title }}
+      {% else %}
+        {{ 'image' | placeholder_svg_tag: 'placeholder-svg' }}
+      {% endif %}
     </div>
   </div>
 </div>
 
 <div class="about-values-strict">
   <div class="container text-center">
-    <h2>The Neoglyn Standard</h2>
+    <h2>{{ section.settings.values_title | default: 'The Neoglyn Standard' }}</h2>
     <div class="values-grid">
-      <div class="value-item">
-        <div class="value-icon">01</div>
-        <h3>Efficacy First</h3>
-        <p>Every device is backed by independently verified clinical trials. We measure success in measurable results.</p>
-      </div>
-      <div class="value-item">
-        <div class="value-icon">02</div>
-        <h3>Precision Engineering</h3>
-        <p>Built with aerospace-grade materials to ensure lifelong durability and exact wavelength output.</p>
-      </div>
-      <div class="value-item">
-        <div class="value-icon">03</div>
-        <h3>Radical Transparency</h3>
-        <p>No proprietary blends or hidden mechanisms. We publish our clinical data and component sourcing.</p>
-      </div>
+      {% for block in section.blocks %}
+        {% if block.type == 'value_item' %}
+          <div class="value-item" {{ block.shopify_attributes }}>
+            <div class="value-icon">{{ block.settings.icon_text | default: '01' }}</div>
+            <h3>{{ block.settings.title | default: 'Core Value' }}</h3>
+            <p>{{ block.settings.text | default: 'Description of this value.' }}</p>
+          </div>
+        {% endif %}
+      {% else %}
+        <!-- Fallbacks for empty state -->
+        <div class="value-item">
+          <div class="value-icon">01</div>
+          <h3>Efficacy First</h3>
+          <p>Every device is backed by independently verified clinical trials. We measure success in measurable results.</p>
+        </div>
+        <div class="value-item">
+          <div class="value-icon">02</div>
+          <h3>Precision Engineering</h3>
+          <p>Built with aerospace-grade materials to ensure lifelong durability and exact wavelength output.</p>
+        </div>
+        <div class="value-item">
+          <div class="value-icon">03</div>
+          <h3>Radical Transparency</h3>
+          <p>No proprietary blends or hidden mechanisms. We publish our clinical data and component sourcing.</p>
+        </div>
+      {% endfor %}
     </div>
   </div>
 </div>
@@ -64,7 +79,7 @@
   position: relative;
   aspect-ratio: 3/4;
 }
-.about-hero__image img {
+.about-hero__image img, .about-hero__image svg {
   width: 100%;
   height: 100%;
   object-fit: cover;
@@ -116,6 +131,72 @@
 {% schema %}
 {
   "name": "About Strict",
-  "settings": []
+  "settings": [
+    {
+      "type": "text",
+      "id": "hero_caption",
+      "label": "Hero Caption",
+      "default": "OUR MISSION"
+    },
+    {
+      "type": "text",
+      "id": "hero_title",
+      "label": "Hero Title",
+      "default": "The Science of Radiance"
+    },
+    {
+      "type": "textarea",
+      "id": "hero_text",
+      "label": "Hero Text",
+      "default": "Redefining skincare through advanced molecular research and clinical-grade engineering."
+    },
+    {
+      "type": "image_picker",
+      "id": "hero_image",
+      "label": "Hero Image"
+    },
+    {
+      "type": "text",
+      "id": "values_title",
+      "label": "Values Section Title",
+      "default": "The Neoglyn Standard"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "value_item",
+      "name": "Value Item",
+      "settings": [
+        {
+          "type": "text",
+          "id": "icon_text",
+          "label": "Icon/Number Text",
+          "default": "01"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title",
+          "default": "Value Heading"
+        },
+        {
+          "type": "textarea",
+          "id": "text",
+          "label": "Description",
+          "default": "Describe your core value here."
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "About Strict",
+      "blocks": [
+        { "type": "value_item" },
+        { "type": "value_item" },
+        { "type": "value_item" }
+      ]
+    }
+  ]
 }
 {% endschema %}

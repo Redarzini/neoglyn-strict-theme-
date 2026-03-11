@@ -2,44 +2,53 @@
   <div class="track-order-card text-center fade-in-up">
     
     <div class="track-order-header">
-      <h1 class="track-order-title">Track Your Order</h1>
-      <p class="track-order-subtitle">Enter your details below to see the real-time status of<br>your shipment.</p>
+      <h1 class="track-order-title">{{ section.settings.title | default: 'Track Your Order' }}</h1>
+      <p class="track-order-subtitle">{{ section.settings.subtitle | default: 'Enter your details below to see the real-time status of your shipment.' }}</p>
     </div>
 
     <div class="track-form-container">
       <form class="track-form" action="#" method="GET">
-        <label for="tracking-number" class="track-label">ORDER OR TRACKING NUMBER</label>
+        <label for="tracking-number" class="track-label">{{ section.settings.form_label | default: 'ORDER OR TRACKING NUMBER' }}</label>
         <div class="input-with-icon">
           <svg class="search-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
-          <input type="text" id="tracking-number" name="q" placeholder="e.g. NG-88231 or 1Z999..." required>
+          <input type="text" id="tracking-number" name="q" placeholder="{{ section.settings.form_placeholder | default: 'e.g. NG-88231 or 1Z999...' }}" required>
         </div>
-        <button type="button" class="btn btn-track">Track Package</button>
+        <button type="button" class="btn btn-track">{{ section.settings.button_text | default: 'Track Package' }}</button>
       </form>
       
       <div class="track-help">
-        <p>Need help with your shipment? <a href="/pages/contact" class="support-link">Contact Support</a></p>
+        <p>{{ section.settings.support_text | default: 'Need help with your shipment?' }} <a href="{{ section.settings.support_link | default: routes.root_url }}" class="support-link">Contact Support</a></p>
       </div>
     </div>
 
     <div class="track-features">
-      <div class="feature-item">
-        <div class="feature-icon">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path><polyline points="9 12 11 14 15 10"></polyline></svg>
+      {% for block in section.blocks %}
+        <div class="feature-item" {{ block.shopify_attributes }}>
+          <div class="feature-icon">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+          </div>
+          <span class="feature-title">{{ block.settings.title | default: 'FEATURE' }}</span>
         </div>
-        <span class="feature-title">SECURE</span>
-      </div>
-      <div class="feature-item">
-        <div class="feature-icon">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+      {% else %}
+        <div class="feature-item">
+          <div class="feature-icon">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path><polyline points="9 12 11 14 15 10"></polyline></svg>
+          </div>
+          <span class="feature-title">SECURE</span>
         </div>
-        <span class="feature-title">REAL-TIME</span>
-      </div>
-      <div class="feature-item">
-        <div class="feature-icon">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><line x1="2" y1="12" x2="22" y2="12"></line><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path></svg>
+        <div class="feature-item">
+          <div class="feature-icon">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+          </div>
+          <span class="feature-title">REAL-TIME</span>
         </div>
-        <span class="feature-title">GLOBAL</span>
-      </div>
+        <div class="feature-item">
+          <div class="feature-icon">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><line x1="2" y1="12" x2="22" y2="12"></line><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path></svg>
+          </div>
+          <span class="feature-title">GLOBAL</span>
+        </div>
+      {% endfor %}
     </div>
 
   </div>
@@ -218,6 +227,72 @@
 {% schema %}
 {
   "name": "Track Order Strict",
-  "settings": []
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Heading",
+      "default": "Track Your Order"
+    },
+    {
+      "type": "textarea",
+      "id": "subtitle",
+      "label": "Subheading",
+      "default": "Enter your details below to see the real-time status of your shipment."
+    },
+    {
+      "type": "text",
+      "id": "form_label",
+      "label": "Form Label",
+      "default": "ORDER OR TRACKING NUMBER"
+    },
+    {
+      "type": "text",
+      "id": "form_placeholder",
+      "label": "Input Placeholder",
+      "default": "e.g. NG-88231 or 1Z999..."
+    },
+    {
+      "type": "text",
+      "id": "button_text",
+      "label": "Button Text",
+      "default": "Track Package"
+    },
+    {
+      "type": "text",
+      "id": "support_text",
+      "label": "Support Text",
+      "default": "Need help with your shipment?"
+    },
+    {
+      "type": "url",
+      "id": "support_link",
+      "label": "Support Link"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "feature",
+      "name": "Feature Badge",
+      "settings": [
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Feature Title",
+          "default": "SECURE"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Track Order Strict",
+      "blocks": [
+        { "type": "feature" },
+        { "type": "feature" },
+        { "type": "feature" }
+      ]
+    }
+  ]
 }
 {% endschema %}

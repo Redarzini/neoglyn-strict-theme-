@@ -3,7 +3,7 @@
   <!-- Left Side: Forms -->
   <div class="checkout-main">
     <div class="checkout-header">
-      <div class="logo-text">NEOGLYN</div>
+      <div class="logo-text">{{ section.settings.logo_text | default: 'NEOGLYN' }}</div>
       <nav class="checkout-breadcrumbs">
         <span>Cart</span>
         <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" width="12" height="12"><polyline points="9 18 15 12 9 6"></polyline></svg>
@@ -99,14 +99,18 @@
     <div class="sidebar-inner">
       <div class="order-item">
         <div class="item-image">
-          {{ 'product-1' | placeholder_svg_tag: 'placeholder-svg' }}
+          {% if section.settings.product_image %}
+            {{ section.settings.product_image | image_url: width: 100 | image_tag }}
+          {% else %}
+            {{ 'product-1' | placeholder_svg_tag: 'placeholder-svg' }}
+          {% endif %}
           <span class="item-qty">1</span>
         </div>
         <div class="item-info">
-          <h3>Neoglyn Pro Advanced</h3>
-          <p>Midnight Blue Edition</p>
+          <h3>{{ section.settings.product_title | default: 'Neoglyn Pro Advanced' }}</h3>
+          <p>{{ section.settings.product_variant | default: 'Midnight Blue Edition' }}</p>
         </div>
-        <div class="item-price">$249.00</div>
+        <div class="item-price">{{ section.settings.product_price | default: '$249.00' }}</div>
       </div>
       
       <div class="discount-code">
@@ -117,7 +121,7 @@
       <div class="totals-block">
         <div class="totals-row">
           <span>Subtotal</span>
-          <span class="price">$249.00</span>
+          <span class="price">{{ section.settings.product_price | default: '$249.00' }}</span>
         </div>
         <div class="totals-row">
           <span>Shipping</span>
@@ -127,7 +131,7 @@
       
       <div class="totals-final">
         <span>Total</span>
-        <span class="final-price"><span class="currency">USD</span> $249.00</span>
+        <span class="final-price"><span class="currency">USD</span> {{ section.settings.product_price | default: '$249.00' }}</span>
       </div>
     </div>
   </aside>
@@ -422,6 +426,41 @@ select.input-field {
 {% schema %}
 {
   "name": "Checkout Imitation",
-  "settings": []
+  "settings": [
+    {
+      "type": "text",
+      "id": "logo_text",
+      "label": "Logo Text",
+      "default": "NEOGLYN"
+    },
+    {
+      "type": "text",
+      "id": "product_title",
+      "label": "Product Title",
+      "default": "Neoglyn Pro Advanced"
+    },
+    {
+      "type": "text",
+      "id": "product_variant",
+      "label": "Product Variant",
+      "default": "Midnight Blue Edition"
+    },
+    {
+      "type": "text",
+      "id": "product_price",
+      "label": "Product Price",
+      "default": "$249.00"
+    },
+    {
+      "type": "image_picker",
+      "id": "product_image",
+      "label": "Product Image"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Checkout Imitation"
+    }
+  ]
 }
 {% endschema %}

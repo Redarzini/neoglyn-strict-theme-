@@ -1,8 +1,8 @@
 <div class="faq-strict container">
   
   <div class="faq-strict__header">
-    <div class="caption caption--mint">SUPPORT</div>
-    <h1>Frequently Asked Questions</h1>
+    <div class="caption caption--mint">{{ section.settings.caption }}</div>
+    <h1>{{ section.settings.title }}</h1>
   </div>
 
   <div class="faq-layout">
@@ -10,49 +10,32 @@
     <div class="faq-main">
       <div class="faq-accordion">
         
-        <div class="faq-item open">
-          <button class="faq-question">
-            <span>Is the Neoglyn Lumina safe for all skin types?</span>
-            <svg class="icon-plus" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
-            <svg class="icon-minus" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"></line></svg>
-          </button>
-          <div class="faq-answer">
-            <p>Yes. The Neoglyn Lumina uses non-UV LED light and micro-pulse technology that is FDA-cleared and dermatologist-tested to be safe for all skin tones and types, including sensitive skin. If you are extremely photosensitive or have specific medical conditions, we recommend consulting your dermatologist prior to use.</p>
+        {% for block in section.blocks %}
+          {% if block.type == 'faq' %}
+            <div class="faq-item {% if forloop.first %}open{% endif %}" {{ block.shopify_attributes }}>
+              <button class="faq-question">
+                <span>{{ block.settings.question }}</span>
+                <svg class="icon-plus" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
+                <svg class="icon-minus" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"></line></svg>
+              </button>
+              <div class="faq-answer">
+                <p>{{ block.settings.answer }}</p>
+              </div>
+            </div>
+          {% endif %}
+        {% else %}
+          <!-- Fallback when no blocks added -->
+          <div class="faq-item open">
+            <button class="faq-question">
+              <span>Is the Neoglyn Lumina safe for all skin types?</span>
+              <svg class="icon-plus" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
+              <svg class="icon-minus" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"></line></svg>
+            </button>
+            <div class="faq-answer">
+              <p>Yes. The Neoglyn Lumina uses non-UV LED light and micro-pulse technology that is FDA-cleared and dermatologist-tested to be safe for all skin tones and types, including sensitive skin.</p>
+            </div>
           </div>
-        </div>
-
-        <div class="faq-item">
-          <button class="faq-question">
-            <span>How long until I see results?</span>
-            <svg class="icon-plus" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
-            <svg class="icon-minus" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"></line></svg>
-          </button>
-          <div class="faq-answer">
-            <p>Clinical studies show visible improvements in skin tone and acne reduction within 2 weeks of consistent use (5 minutes daily). Significant reductions in fine lines and deeper wrinkles typically occur after 4 to 8 weeks.</p>
-          </div>
-        </div>
-
-        <div class="faq-item">
-          <button class="faq-question">
-            <span>Can I use my own serums with the device?</span>
-            <svg class="icon-plus" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
-            <svg class="icon-minus" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"></line></svg>
-          </button>
-          <div class="faq-answer">
-            <p>While you can use other water-based serums, our Conductive Repair Serum is specifically formulated to maximize the micro-pulse conductivity and LED light penetration. Oil-based serums will block the optical delivery entirely.</p>
-          </div>
-        </div>
-
-        <div class="faq-item">
-          <button class="faq-question">
-            <span>What is the warranty policy?</span>
-            <svg class="icon-plus" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
-            <svg class="icon-minus" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"></line></svg>
-          </button>
-          <div class="faq-answer">
-            <p>Every Neoglyn device comes with a comprehensive 2-year warranty covering any manufacturing defects. We also offer a 60-day money-back guarantee if you are not completely satisfied with your clinical results.</p>
-          </div>
-        </div>
+        {% endfor %}
 
       </div>
     </div>
@@ -60,13 +43,13 @@
     <!-- Sidebar Support -->
     <aside class="faq-sidebar">
       <div class="support-card">
-        <h3>Still have questions?</h3>
-        <p>Our team of clinical specialists is available to assist you with tailored advice.</p>
-        <a href="/pages/contact" class="btn btn--block">Contact Support</a>
+        <h3>{{ section.settings.sidebar_title }}</h3>
+        <p>{{ section.settings.sidebar_text }}</p>
+        <a href="{{ section.settings.btn_link | default: routes.root_url }}" class="btn btn--block">{{ section.settings.btn_text }}</a>
         
         <div class="support-contact-info">
-          <p><strong>Email:</strong> care@neoglyn.com</p>
-          <p><strong>Hours:</strong> Mon-Fri, 9am - 6pm EST</p>
+          <p><strong>Email:</strong> {{ section.settings.email }}</p>
+          <p><strong>Hours:</strong> {{ section.settings.hours }}</p>
         </div>
       </div>
     </aside>
@@ -210,6 +193,95 @@ document.addEventListener('DOMContentLoaded', function() {
 {% schema %}
 {
   "name": "FAQ Strict",
-  "settings": []
+  "settings": [
+    {
+      "type": "text",
+      "id": "caption",
+      "label": "Caption",
+      "default": "SUPPORT"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Heading",
+      "default": "Frequently Asked Questions"
+    },
+    {
+      "type": "text",
+      "id": "sidebar_title",
+      "label": "Sidebar Title",
+      "default": "Still have questions?"
+    },
+    {
+      "type": "textarea",
+      "id": "sidebar_text",
+      "label": "Sidebar Text",
+      "default": "Our team of clinical specialists is available to assist you with tailored advice."
+    },
+    {
+      "type": "text",
+      "id": "btn_text",
+      "label": "Button Text",
+      "default": "Contact Support"
+    },
+    {
+      "type": "url",
+      "id": "btn_link",
+      "label": "Button Link"
+    },
+    {
+      "type": "text",
+      "id": "email",
+      "label": "Email",
+      "default": "care@neoglyn.com"
+    },
+    {
+      "type": "text",
+      "id": "hours",
+      "label": "Hours",
+      "default": "Mon-Fri, 9am - 6pm EST"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "faq",
+      "name": "FAQ Item",
+      "settings": [
+        {
+          "type": "text",
+          "id": "question",
+          "label": "Question",
+          "default": "What is the question?"
+        },
+        {
+          "type": "textarea",
+          "id": "answer",
+          "label": "Answer",
+          "default": "Here is the answer to your question."
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "FAQ Strict",
+      "blocks": [
+        {
+          "type": "faq",
+          "settings": {
+            "question": "Is the Neoglyn Lumina safe for all skin types?",
+            "answer": "Yes. The Neoglyn Lumina uses non-UV LED light and micro-pulse technology that is FDA-cleared and dermatologist-tested to be safe for all skin tones and types, including sensitive skin."
+          }
+        },
+        {
+          "type": "faq",
+          "settings": {
+            "question": "How long until I see results?",
+            "answer": "Clinical studies show visible improvements in skin tone and acne reduction within 2 weeks of consistent use (5 minutes daily). Significant reductions in fine lines and deeper wrinkles typically occur after 4 to 8 weeks."
+          }
+        }
+      ]
+    }
+  ]
 }
 {% endschema %}
