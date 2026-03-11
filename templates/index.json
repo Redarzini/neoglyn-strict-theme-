@@ -1,16 +1,60 @@
 {
   "sections": {
     "hero": {
-      "type": "hero-strict"
+      "type": "hero-strict",
+      "settings": {
+        "title": "Clinical Efficacy, Inside Out.",
+        "subtitle": "Discover the latest advances in LED therapy and proprietary molecular serums.",
+        "btn_text": "SHOP THE PRO"
+      }
     },
     "advantages": {
       "type": "advantages-strict"
     },
     "featured-collection": {
-      "type": "featured-collection-strict"
+      "type": "featured-collection",
+      "settings": {
+        "caption": "MEMBER FAVORITES",
+        "title": "The Routine"
+      }
     },
     "clinical-results": {
-      "type": "clinical-results-strict"
+      "type": "clinical-results-strict",
+      "settings": {
+        "caption": "REAL RESULTS",
+        "title": "Verified efficacy."
+      },
+      "blocks": {
+        "test1": {
+          "type": "testimonial",
+          "settings": {
+            "quote": "After just a few weeks of consistent use, I am seeing a dramatic difference in my skin texture. The redness is completely gone and my jawline feels so much firmer.",
+            "author": "SARAH J.",
+            "device": "NEOGLYN PRO ADVANCED"
+          }
+        },
+        "test2": {
+          "type": "testimonial",
+          "settings": {
+            "quote": "The most effective LED mask I've ever tried. It actually delivers on its promises.",
+            "author": "MICHELLE W.",
+            "device": "NEOGLYN PRO"
+          }
+        },
+        "test3": {
+          "type": "testimonial",
+          "settings": {
+            "quote": "Incredible results for both my fine lines and uneven tone. Worth every penny.",
+            "author": "EMMA R.",
+            "device": "NEOGLYN PRO ADVANCED"
+          }
+        }
+      },
+      "block_order": [
+        "test1",
+        "test2",
+        "test3"
+      ]
     }
   },
   "order": [

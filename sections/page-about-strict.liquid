@@ -9,7 +9,7 @@
       {% if section.settings.hero_image %}
         {{ section.settings.hero_image | image_url: width: 800 | image_tag: loading: 'lazy', alt: section.settings.hero_title }}
       {% else %}
-        {{ 'image' | placeholder_svg_tag: 'placeholder-svg' }}
+        <img src="{{ 'demo-product-1.jpg' | asset_url }}" alt="Our Mission" class="radiance-img" loading="lazy" width="800" height="1200">
       {% endif %}
     </div>
   </div>

@@ -1,7 +1,13 @@
 {
   "sections": {
     "main": {
-      "type": "checkout-imitation-strict"
+      "type": "checkout-imitation-strict",
+      "settings": {
+        "logo_text": "NEOGLYN",
+        "product_title": "Neoglyn Pro Advanced",
+        "product_variant": "Midnight Blue Edition",
+        "product_price": "$249.00"
+      }
     }
   },
   "order": [

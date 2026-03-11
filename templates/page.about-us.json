@@ -1,7 +1,44 @@
 {
   "sections": {
     "main": {
-      "type": "page-about-strict"
+      "type": "page-about-strict",
+      "settings": {
+        "hero_caption": "OUR MISSION",
+        "hero_title": "The Science of Radiance",
+        "hero_text": "Redefining skincare through advanced molecular research and clinical-grade engineering. Neoglyn was founded with a singular purpose: to democratize access to dermatologist-level technology without compromising on aesthetic elegance.",
+        "values_title": "The Neoglyn Standard"
+      },
+      "blocks": {
+        "val1": {
+          "type": "value_item",
+          "settings": {
+            "icon_text": "01",
+            "title": "Efficacy First",
+            "text": "Every device is backed by independently verified clinical trials. We measure success in measurable results."
+          }
+        },
+        "val2": {
+          "type": "value_item",
+          "settings": {
+            "icon_text": "02",
+            "title": "Precision Engineering",
+            "text": "Built with aerospace-grade materials to ensure lifelong durability and exact wavelength output."
+          }
+        },
+        "val3": {
+          "type": "value_item",
+          "settings": {
+            "icon_text": "03",
+            "title": "Radical Transparency",
+            "text": "No proprietary blends or hidden mechanisms. We publish our clinical data and component sourcing."
+          }
+        }
+      },
+      "block_order": [
+        "val1",
+        "val2",
+        "val3"
+      ]
     }
   },
   "order": [

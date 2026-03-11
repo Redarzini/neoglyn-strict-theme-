@@ -1,7 +1,13 @@
 {
   "sections": {
     "main": {
-      "type": "page-contact-strict"
+      "type": "page-contact-strict",
+      "settings": {
+        "title": "Contact Support",
+        "subtitle": "Reach out directly for specialized care and support.",
+        "email": "care@neoglyn.com",
+        "hours": "Mon - Fri, 9am - 6pm EST"
+      }
     }
   },
   "order": [

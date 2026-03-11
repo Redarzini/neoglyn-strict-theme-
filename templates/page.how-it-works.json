@@ -1,7 +1,33 @@
 {
   "sections": {
     "main": {
-      "type": "page-how-it-works-strict"
+      "type": "page-how-it-works-strict",
+      "settings": {
+        "title": "The Science of Radiance",
+        "subtitle": "Experience the synergy of clinical-grade LED light therapy combined with our proprietary serums for unmatched results."
+      },
+      "blocks": {
+        "feat1": {
+          "type": "feature",
+          "settings": {
+            "title": "Targeted LED Therapy",
+            "text": "Our tri-wave technology utilizes deep penetrating light at optimal bandwidths to target cells beneath the skin's surface. Blue light eliminates acne-causing bacteria, while red and near-infrared light stimulate collagen production and reduce inflammation.",
+            "button_text": "Explore Clinical Studies"
+          }
+        },
+        "feat2": {
+          "type": "feature",
+          "settings": {
+            "title": "Micro-Pulse Technology",
+            "text": "Gentle micro-vibrations enhance blood circulation and maximize serum absorption, leading to deeply nourished skin that glows from the inside out.",
+            "button_text": "See How It Works"
+          }
+        }
+      },
+      "block_order": [
+        "feat1",
+        "feat2"
+      ]
     }
   },
   "order": [

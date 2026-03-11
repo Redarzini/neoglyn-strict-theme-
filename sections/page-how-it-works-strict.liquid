@@ -26,8 +26,8 @@
               {{ block.settings.image | image_url: width: 800 | image_tag: loading: 'lazy', alt: block.settings.title, class: 'radiance-img' }}
             </div>
           {% else %}
-            <div class="image-wrapper placeholder-wrapper">
-              {{ 'image' | placeholder_svg_tag: 'placeholder-svg' }}
+            <div class="image-wrapper placeholder-wrapper" style="padding: 0;">
+              <img src="{{ 'demo-skin-after.jpg' | asset_url }}" alt="Targeted LED Therapy" class="radiance-img" loading="lazy" width="800" height="1000">
             </div>
           {% endif %}
         </div>
@@ -48,8 +48,8 @@
           </a>
         </div>
         <div class="science-feature__image">
-          <div class="image-wrapper">
-            {{ 'image' | placeholder_svg_tag: 'placeholder-svg radiance-img' }}
+          <div class="image-wrapper" style="padding: 0;">
+            <img src="{{ 'demo-skin-after.jpg' | asset_url }}" alt="Placeholder" class="radiance-img" loading="lazy" width="800" height="1000">
           </div>
         </div>
       </div>

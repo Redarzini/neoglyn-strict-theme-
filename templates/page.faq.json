@@ -1,7 +1,52 @@
 {
   "sections": {
     "main": {
-      "type": "page-faq-strict"
+      "type": "page-faq-strict",
+      "settings": {
+        "caption": "SUPPORT HUB",
+        "title": "Frequently Asked Questions",
+        "sidebar_title": "Still have questions?",
+        "sidebar_text": "Our team of clinical specialists is available to assist you with tailored advice.",
+        "btn_text": "Contact Support",
+        "email": "care@neoglyn.com",
+        "hours": "Mon-Fri, 9am - 6pm EST"
+      },
+      "blocks": {
+        "faq_1": {
+          "type": "faq",
+          "settings": {
+            "question": "Is the Neoglyn Lumina safe for all skin types?",
+            "answer": "Yes. The Neoglyn Lumina uses non-UV LED light and micro-pulse technology that is FDA-cleared and dermatologist-tested to be safe for all skin tones and types, including sensitive skin."
+          }
+        },
+        "faq_2": {
+          "type": "faq",
+          "settings": {
+            "question": "How long until I see results?",
+            "answer": "Clinical studies show visible improvements in skin tone and acne reduction within 2 weeks of consistent use (5 minutes daily). Significant reductions in fine lines and deeper wrinkles typically occur after 4 to 8 weeks."
+          }
+        },
+        "faq_3": {
+          "type": "faq",
+          "settings": {
+            "question": "Can I use my own serums with the device?",
+            "answer": "While you can use other water-based serums, our Conductive Repair Serum is specifically formulated to maximize the micro-pulse conductivity and LED light penetration. Oil-based serums will block the optical delivery entirely."
+          }
+        },
+        "faq_4": {
+          "type": "faq",
+          "settings": {
+            "question": "What is the warranty policy?",
+            "answer": "Every Neoglyn device comes with a comprehensive 2-year warranty covering any manufacturing defects. We also offer a 60-day money-back guarantee if you are not completely satisfied with your clinical results."
+          }
+        }
+      },
+      "block_order": [
+        "faq_1",
+        "faq_2",
+        "faq_3",
+        "faq_4"
+      ]
     }
   },
   "order": [
